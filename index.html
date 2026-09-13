@@ -492,6 +492,334 @@
             .wa-notificacion { top: -4px; right: -4px; width: 20px; height: 20px; font-size: 0.7rem; border-width: 2px; }
         }
 
+        /* TIENDA DE PRODUCTOS */
+        .tienda-seccion { padding: var(--space-2xl) 8%; background: rgba(244,244,244,0.95); }
+        .tienda-filtros {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        .filtro-btn {
+            background: var(--blanco);
+            border: 2px solid var(--negro);
+            border-radius: var(--radius-sm);
+            padding: 10px 18px;
+            font-weight: bold;
+            font-size: var(--font-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 0px var(--negro);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .filtro-btn:hover {
+            background: var(--gris-claro);
+            transform: translateY(-2px);
+        }
+        .filtro-btn:active { transform: scale(0.96); }
+        .filtro-btn.activo {
+            background: var(--negro);
+            color: var(--blanco);
+            box-shadow: 4px 4px 0px var(--acento);
+        }
+        .tienda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .producto-tarjeta {
+            background: var(--blanco);
+            border: 3px solid var(--negro);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-duro);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .producto-tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-duro-hover);
+        }
+        .producto-imagen {
+            height: 160px;
+            background: linear-gradient(135deg, var(--gris-claro), var(--blanco));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            border-bottom: 2px solid var(--negro);
+            position: relative;
+        }
+        .producto-estado {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: var(--font-xs);
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            color: var(--blanco);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .estado-nuevo { background: #1da851; }
+        .estado-usado { background: #d97706; }
+        .estado-consultar { background: var(--acento); }
+        .producto-cuerpo {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .producto-categoria {
+            display: inline-block;
+            background: var(--acento);
+            color: var(--blanco);
+            font-size: var(--font-xs);
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-self: flex-start;
+        }
+        .producto-titulo {
+            font-size: var(--font-md);
+            font-weight: 800;
+            color: var(--negro);
+            margin: 0 0 var(--space-sm) 0;
+            line-height: 1.3;
+        }
+        .producto-specs {
+            font-size: var(--font-sm);
+            color: var(--gris-oscuro);
+            line-height: 1.5;
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+        }
+        .producto-precio {
+            font-size: var(--font-xs);
+            color: var(--gris-oscuro);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+        .boton-agregar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--negro);
+            color: var(--blanco);
+            border: 2px solid var(--negro);
+            padding: 10px;
+            font-weight: bold;
+            font-size: var(--font-sm);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-agregar:hover {
+            background: var(--acento);
+            border-color: var(--acento);
+            transform: translateY(-2px);
+        }
+        .boton-agregar:active { transform: scale(0.97); }
+        .boton-agregar.agregado {
+            background: #1da851;
+            border-color: #1da851;
+        }
+
+        /* CARRITO FLOTANTE */
+        .carrito-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 100px;
+            z-index: 9998;
+        }
+        .carrito-burbuja {
+            width: 60px;
+            height: 60px;
+            background: var(--negro);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: var(--blanco);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 3px solid var(--acento);
+        }
+        .carrito-burbuja:hover {
+            transform: scale(1.1);
+            background: var(--acento);
+        }
+        .carrito-contador {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ff3b30;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid white;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .carrito-panel {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 340px;
+            max-width: calc(100vw - 40px);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .carrito-panel.abierto {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .carrito-header {
+            background: var(--negro);
+            color: white;
+            padding: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--acento);
+        }
+        .carrito-header h4 {
+            margin: 0;
+            font-size: var(--font-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .carrito-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .carrito-header button:hover { opacity: 1; }
+        .carrito-items {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: var(--space-sm);
+        }
+        .carrito-vacio {
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+            color: var(--gris-oscuro);
+            font-size: var(--font-sm);
+            font-style: italic;
+        }
+        .carrito-vacio i {
+            font-size: 2.5rem;
+            color: var(--gris-claro);
+            display: block;
+            margin-bottom: var(--space-md);
+        }
+        .carrito-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border-bottom: 1px solid var(--gris-claro);
+            font-size: var(--font-sm);
+        }
+        .carrito-item:last-child { border-bottom: none; }
+        .carrito-item-icono {
+            width: 40px;
+            height: 40px;
+            background: var(--gris-claro);
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .carrito-item-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        .carrito-item-info strong {
+            display: block;
+            font-size: var(--font-xs);
+            color: var(--negro);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .carrito-item-info span {
+            font-size: 0.7rem;
+            color: var(--gris-oscuro);
+        }
+        .carrito-item-eliminar {
+            background: none;
+            border: none;
+            color: #d93636;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 5px;
+            transition: transform 0.2s;
+        }
+        .carrito-item-eliminar:hover { transform: scale(1.2); }
+        .carrito-footer {
+            padding: var(--space-md);
+            background: var(--gris-claro);
+            border-top: 2px solid var(--negro);
+        }
+        .carrito-footer .boton-whatsapp {
+            margin-top: 0;
+        }
+        .carrito-nota {
+            font-size: 0.75rem;
+            color: var(--gris-oscuro);
+            text-align: center;
+            margin-top: var(--space-sm);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .tienda-seccion { padding: var(--space-xl) 5%; }
+            .tienda-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
+            .producto-imagen { height: 130px; font-size: 3rem; }
+            .producto-titulo { font-size: var(--font-sm); }
+            .producto-specs { font-size: var(--font-xs); }
+            .filtro-btn { padding: 8px 12px; font-size: var(--font-xs); }
+            .carrito-widget { right: 90px; bottom: 20px; }
+            .carrito-burbuja { width: 55px; height: 55px; font-size: 1.4rem; }
+            .carrito-panel { width: 320px; right: -10px; }
+        }
+
         footer { background: var(--negro); color: white; text-align: center; padding: var(--space-lg); margin-top: var(--space-lg); }
 
         @media (max-width: 768px) {
@@ -519,6 +847,7 @@
                 <a href="#servicios">Servicios</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#venta">Venta de Equipos</a>
+                <a href="#tienda">Tienda</a>
                 <a href="#descargas">Descargas</a>
                 <a href="#galeria">Galería</a>
                 <a href="#consejos">Consejos</a>
@@ -914,6 +1243,24 @@
         </div>
     </section>
 
+    <!-- SECCIÓN TIENDA -->
+    <section id="tienda" class="tienda-seccion">
+        <h2 class="seccion-titulo"><i class="fas fa-shopping-bag" style="color: var(--acento);"></i> TIENDA</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--gris-oscuro); font-size: var(--font-md);">Selecciona los productos que te interesan y envíanos tu cotización por WhatsApp. Los precios varían según disponibilidad del proveedor.</p>
+        
+        <div class="tienda-filtros">
+            <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">Todos</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Corporativo', this)">Corporativos</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Consumo', this)">Consumo</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Gamer', this)">Gamer</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Segunda', this)">Segunda</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Componentes', this)">Componentes</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Periféricos', this)">Periféricos</button>
+        </div>
+
+        <div class="tienda-grid" id="tiendaGrid"></div>
+    </section>
+
     <section class="banner-domicilio">
         <img src="img/domicilio.png" alt="Servicio a Domicilio" loading="lazy" decoding="async">
         <h2>Servicio Express a Domicilio</h2>
@@ -1207,6 +1554,31 @@
         <div id="lightbox-contador" class="lightbox-contador"></div>
     </div>
 
+    <div class="carrito-widget">
+        <div class="carrito-panel" id="carritoPanel">
+            <div class="carrito-header">
+                <h4><i class="fas fa-shopping-cart"></i> Tu cotización</h4>
+                <button onclick="toggleCarrito()">&times;</button>
+            </div>
+            <div class="carrito-items" id="carritoItems">
+                <div class="carrito-vacio">
+                    <i class="fas fa-shopping-basket"></i>
+                    Aún no has seleccionado productos
+                </div>
+            </div>
+            <div class="carrito-footer">
+                <button type="button" class="boton-whatsapp" onclick="enviarCotizacion()">
+                    <i class="fab fa-whatsapp"></i> Enviar cotización
+                </button>
+                <p class="carrito-nota">Al enviar, te cotizamos cada producto según disponibilidad actual.</p>
+            </div>
+        </div>
+        <div class="carrito-burbuja" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="carrito-contador" id="carritoContador">0</span>
+        </div>
+    </div>
+
     <div class="wa-widget">
         <div class="wa-panel" id="waPanel">
             <div class="wa-panel-header">
@@ -1259,7 +1631,7 @@
         }
 
         document.addEventListener('click', function(e) {
-            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item');
+            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja');
             if (!elemento) return;
             vibrar();
             var rect = elemento.getBoundingClientRect();
@@ -1275,7 +1647,7 @@
             if (getComputedStyle(elemento).position === 'static') {
                 elemento.style.position = 'relative';
             }
-            if (getComputedStyle(elemento).overflow !== 'hidden' && !elemento.classList.contains('wa-burbuja')) {
+            if (getComputedStyle(elemento).overflow !== 'hidden' && !elemento.classList.contains('wa-burbuja') && !elemento.classList.contains('carrito-burbuja')) {
                 elemento.style.overflow = 'hidden';
             }
             elemento.appendChild(ripple);
@@ -1349,6 +1721,187 @@
             if (window.innerWidth <= 768) {
                 elemento.classList.toggle('abierto');
             }
+        }
+
+        // ============================================
+        // TIENDA DE PRODUCTOS Y CARRITO
+        // ============================================
+        
+        const PRODUCTOS = [
+            { nombre: "Portátil HP ProBook 450", categoria: "Corporativo", especificaciones: "Core i5 11va, 8GB RAM, 256GB SSD", estado: "Nuevo", icono: "💻" },
+            { nombre: "Portátil Lenovo ThinkPad T14", categoria: "Corporativo", especificaciones: "Core i7 12va, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "💻" },
+            { nombre: "Portátil Dell Latitude 5420", categoria: "Corporativo", especificaciones: "Core i5 11va, 16GB RAM, 256GB SSD", estado: "Usado", icono: "💻" },
+            { nombre: "Portátil Acer Aspire 3", categoria: "Consumo", especificaciones: "Ryzen 5, 8GB RAM, 256GB SSD", estado: "Nuevo", icono: "🖥️" },
+            { nombre: "Portátil ASUS VivoBook", categoria: "Consumo", especificaciones: "Core i3 12va, 8GB RAM, 512GB SSD", estado: "Nuevo", icono: "🖥️" },
+            { nombre: "Portátil HP 15 Essential", categoria: "Consumo", especificaciones: "Core i5, 8GB RAM, 1TB HDD", estado: "Usado", icono: "🖥️" },
+            { nombre: "Portátil ASUS ROG Strix G16", categoria: "Gamer", especificaciones: "Core i7, RTX 4060, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "🎮" },
+            { nombre: "Portátil Lenovo LOQ 15", categoria: "Gamer", especificaciones: "Ryzen 7, RTX 4050, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "🎮" },
+            { nombre: "Portátil MSI Katana 15", categoria: "Gamer", especificaciones: "Core i7, RTX 3050, 8GB RAM, 512GB SSD", estado: "Consultar", icono: "🎮" },
+            { nombre: "SSD Kingston NV2 500GB NVMe", categoria: "Componentes", especificaciones: "M.2 NVMe PCIe 4.0", estado: "Nuevo", icono: "💾" },
+            { nombre: "SSD Samsung 980 1TB NVMe", categoria: "Componentes", especificaciones: "M.2 NVMe PCIe 3.0", estado: "Nuevo", icono: "💾" },
+            { nombre: "Memoria RAM DDR4 8GB", categoria: "Componentes", especificaciones: "2666MHz SODIMM portátil", estado: "Nuevo", icono: "🔌" },
+            { nombre: "Memoria RAM DDR4 16GB", categoria: "Componentes", especificaciones: "3200MHz SODIMM portátil", estado: "Nuevo", icono: "🔌" },
+            { nombre: "Pantalla para portátil 15.6\"", categoria: "Componentes", especificaciones: "FHD 1920x1080 30 pines", estado: "Consultar", icono: "📺" },
+            { nombre: "Batería para portátil HP", categoria: "Componentes", especificaciones: "Compatible modelos HP Pavilion y ProBook", estado: "Consultar", icono: "🔋" },
+            { nombre: "Cargador para portátil Lenovo", categoria: "Componentes", especificaciones: "65W USB-C original", estado: "Nuevo", icono: "🔌" },
+            { nombre: "Mouse Logitech M170", categoria: "Periféricos", especificaciones: "Inalámbrico USB", estado: "Nuevo", icono: "🖱️" },
+            { nombre: "Teclado Logitech K120", categoria: "Periféricos", especificaciones: "USB estándar español", estado: "Nuevo", icono: "⌨️" },
+            { nombre: "Impresora Epson L3250", categoria: "Periféricos", especificaciones: "Multifuncional WiFi tanque de tinta", estado: "Nuevo", icono: "🖨️" },
+            { nombre: "Laptop HP EliteBook 840 G5", categoria: "Segunda", especificaciones: "Core i5 8va, 8GB RAM, 256GB SSD", estado: "Usado", icono: "💻" },
+            { nombre: "Laptop Dell Latitude 7490", categoria: "Segunda", especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", estado: "Usado", icono: "💻" },
+            { nombre: "Laptop Lenovo ThinkPad X1 Carbon", categoria: "Segunda", especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", estado: "Usado", icono: "💻" }
+        ];
+
+        let carrito = [];
+        let filtroActual = 'todos';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const guardado = localStorage.getItem('carritoMR');
+            if (guardado) {
+                try {
+                    carrito = JSON.parse(guardado);
+                } catch(e) { carrito = []; }
+            }
+            renderizarProductos();
+            actualizarCarrito();
+        });
+
+        function renderizarProductos() {
+            const grid = document.getElementById('tiendaGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const filtrados = filtroActual === 'todos' 
+                ? PRODUCTOS 
+                : PRODUCTOS.filter(p => p.categoria === filtroActual);
+            
+            if (filtrados.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; color:#888; grid-column: 1/-1; padding: 40px;">No hay productos en esta categoría por ahora.</p>';
+                return;
+            }
+            
+            filtrados.forEach((producto) => {
+                const claseEstado = producto.estado === 'Nuevo' ? 'estado-nuevo' 
+                                  : producto.estado === 'Usado' ? 'estado-usado' 
+                                  : 'estado-consultar';
+                
+                const estaEnCarrito = carrito.some(item => item.nombre === producto.nombre);
+                const indexReal = PRODUCTOS.indexOf(producto);
+                
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'producto-tarjeta';
+                tarjeta.innerHTML = `
+                    <div class="producto-imagen">
+                        <span class="producto-estado ${claseEstado}">${producto.estado}</span>
+                        ${producto.icono}
+                    </div>
+                    <div class="producto-cuerpo">
+                        <span class="producto-categoria">${producto.categoria}</span>
+                        <h3 class="producto-titulo">${producto.nombre}</h3>
+                        <p class="producto-specs">${producto.especificaciones}</p>
+                        <p class="producto-precio">💬 Precio según disponibilidad</p>
+                        <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="toggleProductoCarrito(${indexReal})">
+                            <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
+                            ${estaEnCarrito ? 'Agregado' : 'Agregar a cotización'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(tarjeta);
+            });
+        }
+
+        function filtrarProductos(categoria, boton) {
+            filtroActual = categoria;
+            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+            boton.classList.add('activo');
+            renderizarProductos();
+        }
+
+        function toggleProductoCarrito(index) {
+            const producto = PRODUCTOS[index];
+            const existe = carrito.findIndex(item => item.nombre === producto.nombre);
+            
+            if (existe !== -1) {
+                carrito.splice(existe, 1);
+            } else {
+                carrito.push({ 
+                    nombre: producto.nombre, 
+                    categoria: producto.categoria,
+                    especificaciones: producto.especificaciones,
+                    estado: producto.estado,
+                    icono: producto.icono 
+                });
+            }
+            
+            localStorage.setItem('carritoMR', JSON.stringify(carrito));
+            renderizarProductos();
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const contador = document.getElementById('carritoContador');
+            const items = document.getElementById('carritoItems');
+            
+            if (contador) contador.textContent = carrito.length;
+            
+            if (!items) return;
+            
+            if (carrito.length === 0) {
+                items.innerHTML = `
+                    <div class="carrito-vacio">
+                        <i class="fas fa-shopping-basket"></i>
+                        Aún no has seleccionado productos
+                    </div>
+                `;
+                return;
+            }
+            
+            items.innerHTML = '';
+            carrito.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'carrito-item';
+                div.innerHTML = `
+                    <div class="carrito-item-icono">${item.icono}</div>
+                    <div class="carrito-item-info">
+                        <strong>${item.nombre}</strong>
+                        <span>${item.categoria} · ${item.estado}</span>
+                    </div>
+                    <button class="carrito-item-eliminar" onclick="eliminarDelCarrito(${index})">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                items.appendChild(div);
+            });
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            localStorage.setItem('carritoMR', JSON.stringify(carrito));
+            renderizarProductos();
+            actualizarCarrito();
+        }
+
+        function toggleCarrito() {
+            document.getElementById('carritoPanel').classList.toggle('abierto');
+        }
+
+        function enviarCotizacion() {
+            if (carrito.length === 0) {
+                alert('Por favor selecciona al menos un producto antes de enviar la cotización.');
+                return;
+            }
+            
+            const numeroWhatsApp = "573113944320";
+            let texto = "Hola, me interesa cotizar los siguientes productos:\n\n";
+            
+            carrito.forEach((item, i) => {
+                texto += `${i + 1}. ${item.nombre}\n   📋 ${item.especificaciones}\n   🏷️ ${item.categoria} · ${item.estado}\n\n`;
+            });
+            
+            texto += "¿Me pueden informar precios y disponibilidad actual? Gracias.";
+            
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
         }
 
         window.addEventListener('scroll', function() {
