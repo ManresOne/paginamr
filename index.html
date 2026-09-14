@@ -540,6 +540,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            scroll-margin-top: 100px;
         }
         .producto-tarjeta:hover {
             transform: translateY(-5px);
@@ -549,16 +550,57 @@
         .producto-tarjeta.destacado {
             animation: pulso-destacado 1.2s ease-in-out infinite;
             border-color: var(--acento);
-            box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.3), 10px 10px 0px var(--acento);
+            border-width: 5px;
+            box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.35), 10px 10px 0px var(--acento);
             z-index: 5;
         }
         @keyframes pulso-destacado {
             0%, 100% {
-                box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.3), 10px 10px 0px var(--acento);
+                box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.35), 10px 10px 0px var(--acento);
             }
             50% {
-                box-shadow: 0 0 0 12px rgba(0, 123, 255, 0.5), 10px 10px 0px var(--acento);
+                box-shadow: 0 0 0 16px rgba(0, 123, 255, 0.55), 10px 10px 0px var(--acento);
             }
+        }
+        /* BANNER DE PRODUCTO COMPARTIDO */
+        .banner-compartido {
+            background: linear-gradient(135deg, var(--acento), #0056b3);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            font-weight: bold;
+            font-size: var(--font-md);
+            border: 3px solid var(--negro);
+            box-shadow: 6px 6px 0px var(--negro);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            animation: aparecer-banner 0.5s ease forwards;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .banner-compartido.visible {
+            display: flex;
+        }
+        .banner-compartido i {
+            font-size: 1.5rem;
+            animation: bounce-notif 1.5s infinite;
+        }
+        @keyframes aparecer-banner {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .banner-compartido {
+                font-size: var(--font-sm);
+                padding: var(--space-sm) var(--space-md);
+                margin-bottom: var(--space-md);
+            }
+            .banner-compartido i { font-size: 1.2rem; }
         }
         .producto-cabecera {
             cursor: pointer;
@@ -709,7 +751,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--verde-wsp);
+            background: var(--negro);
             color: var(--blanco);
             border: 2px solid var(--negro);
             width: 44px;
@@ -722,8 +764,8 @@
             flex-shrink: 0;
         }
         .boton-compartir:hover {
-            background: var(--negro);
-            color: var(--verde-wsp);
+            background: var(--acento);
+            color: var(--blanco);
             transform: translateY(-2px);
         }
         .boton-compartir:active { transform: scale(0.95); }
@@ -1441,6 +1483,12 @@
         <h2 class="seccion-titulo"><i class="fas fa-shopping-bag" style="color: var(--acento);"></i> TIENDA</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--gris-oscuro); font-size: var(--font-md);">Selecciona los productos que te interesan y envíanos tu cotización por WhatsApp. Los precios varían según disponibilidad del proveedor.</p>
         
+        <!-- BANNER DE PRODUCTO COMPARTIDO -->
+        <div class="banner-compartido" id="bannerCompartido">
+            <i class="fas fa-share-alt"></i>
+            <span>📍 Te compartieron un producto — lo encontrarás resaltado abajo</span>
+        </div>
+        
         <div class="tienda-filtros">
             <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">Todos</button>
             <button class="filtro-btn" onclick="filtrarProductos('Corporativo', this)">Corporativos</button>
@@ -1943,7 +1991,6 @@
         // - foto: ruta de la imagen (ej: "img/productos/mi-foto.png") o null para usar el icono
         // - precio: texto del precio (ej: "$2.245.000") o null para "Precio según disponibilidad"
         // ⚠️ IMPORTANTE: Cada propiedad termina en COMA, y los textos van entre COMILLAS
-        // 🔗 El link para compartir se genera automáticamente desde el nombre del producto.
         
         const PRODUCTOS = [
             { 
@@ -2160,12 +2207,12 @@
                 .toString()
                 .toLowerCase()
                 .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')   // Quitar tildes
+                .replace(/[\u0300-\u036f]/g, '')
                 .replace(/ñ/g, 'n')
-                .replace(/[^a-z0-9\s-]/g, '')      // Quitar símbolos
-                .replace(/\s+/g, '-')              // Espacios → guiones
-                .replace(/-+/g, '-')               // Múltiples guiones → uno
-                .replace(/^-+|-+$/g, '');          // Quitar guiones al inicio/final
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-+|-+$/g, '');
         }
 
         // ============================================
@@ -2174,9 +2221,7 @@
         // ============================================
         function obtenerUrlBase() {
             let path = window.location.pathname;
-            // Quitar index.html si está presente
             path = path.replace(/index\.html$/i, '');
-            // Asegurar que termine en /
             if (!path.endsWith('/')) path += '/';
             return window.location.origin + path;
         }
@@ -2205,7 +2250,7 @@
         }
 
         // ============================================
-        // COMPARTIR PRODUCTO POR WHATSAPP
+        // COPIAR LINK DEL PRODUCTO AL PORTAPAPELES
         // ============================================
         function compartirProducto(index) {
             const producto = PRODUCTOS[index];
@@ -2213,52 +2258,78 @@
             
             const slug = generarSlug(producto.nombre);
             const url = obtenerUrlBase() + '?producto=' + slug;
-            const mensaje = 'Hola, mira este equipo: ' + url;
-            const urlWhatsApp = 'https://wa.me/?text=' + encodeURIComponent(mensaje);
             
-            mostrarToast('Abriendo WhatsApp...', 'fab fa-whatsapp');
+            // Intentar con la API moderna de portapapeles
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function() {
+                    mostrarToast('Link copiado. Pegalo en tu chat', 'fas fa-check-circle');
+                }).catch(function() {
+                    copiarFallback(url);
+                });
+            } else {
+                copiarFallback(url);
+            }
+        }
+
+        // Fallback para navegadores sin clipboard API (WebView antiguo de WhatsApp, etc.)
+        function copiarFallback(url) {
+            const input = document.createElement('textarea');
+            input.value = url;
+            input.style.position = 'fixed';
+            input.style.top = '0';
+            input.style.left = '0';
+            input.style.opacity = '0';
+            input.style.pointerEvents = 'none';
+            document.body.appendChild(input);
+            input.focus();
+            input.select();
             
-            // Pequeño delay para que se vea el toast antes de abrir WhatsApp
-            setTimeout(function() {
-                window.open(urlWhatsApp, '_blank');
-            }, 400);
+            let exito = false;
+            try {
+                exito = document.execCommand('copy');
+            } catch (e) {
+                exito = false;
+            }
+            
+            document.body.removeChild(input);
+            
+            if (exito) {
+                mostrarToast('Link copiado. Pegalo en tu chat', 'fas fa-check-circle');
+            } else {
+                window.prompt('Copia este link manualmente:', url);
+            }
         }
 
         // ============================================
-        // LEER URL Y RESALTAR PRODUCTO COMPARTIDO
+        // DETECTAR PRODUCTO COMPARTIDO EN LA URL
+        // Con reintentos para WebView de WhatsApp
         // ============================================
+        let productoCompartidoDetectado = false;
+        
         function detectarProductoCompartido() {
+            if (productoCompartidoDetectado) return;
+            
             const params = new URLSearchParams(window.location.search);
             const slugBuscado = params.get('producto');
             if (!slugBuscado) return;
             
             // Buscar producto por slug
             let productoEncontrado = null;
-            let indexEncontrado = -1;
-            
-            PRODUCTOS.forEach(function(prod, idx) {
+            PRODUCTOS.forEach(function(prod) {
                 if (generarSlug(prod.nombre) === slugBuscado) {
                     productoEncontrado = prod;
-                    indexEncontrado = idx;
                 }
             });
             
             if (!productoEncontrado) return;
             
-            // Cambiar el filtro a la categoría del producto y mostrar todos
-            filtroActual = productoEncontrado.categoria;
-            productosVisibles = PRODUCTOS.length; // Mostrar todos para asegurar que el producto esté visible
+            productoCompartidoDetectado = true;
             
-            // Actualizar botones de filtro visualmente
-            document.querySelectorAll('.filtro-btn').forEach(function(btn) {
-                btn.classList.remove('activo');
-                if (btn.textContent.trim().toLowerCase().indexOf(productoEncontrado.categoria.toLowerCase().substring(0, 5)) !== -1 ||
-                    btn.textContent.trim() === 'Todos') {
-                    // No hacemos nada, solo evitamos errores
-                }
-            });
+            // Cambiar filtro a la categoría del producto y mostrar todos
+            filtroActual = productoEncontrado.categoria;
+            productosVisibles = PRODUCTOS.length;
+            
             // Marcar el botón correcto
-            const botones = document.querySelectorAll('.filtro-btn');
             const mapaCategoria = {
                 'Corporativo': 'Corporativos',
                 'Consumo': 'Consumo',
@@ -2268,47 +2339,90 @@
                 'Periféricos': 'Periféricos'
             };
             const textoBoton = mapaCategoria[productoEncontrado.categoria] || 'Todos';
-            botones.forEach(function(btn) {
+            document.querySelectorAll('.filtro-btn').forEach(function(btn) {
+                btn.classList.remove('activo');
                 if (btn.textContent.trim() === textoBoton) {
                     btn.classList.add('activo');
                 }
             });
             
+            // Mostrar el banner
+            const banner = document.getElementById('bannerCompartido');
+            if (banner) banner.classList.add('visible');
+            
             // Re-renderizar
             renderizarProductos();
             
-            // Esperar un momento para que se renderice y luego scroll + destacar
-            setTimeout(function() {
-                const tarjetas = document.querySelectorAll('.producto-tarjeta');
-                tarjetas.forEach(function(tarjeta, idx) {
-                    // Buscar el índice del producto dentro del filtro actual
+            // Scroll y resaltado con múltiples intentos (para WebView de WhatsApp)
+            scrollYDestacar(slugBuscado);
+        }
+        
+        function scrollYDestacar(slugBuscado) {
+            const intentos = [500, 1500, 3000];
+            
+            intentos.forEach(function(delay) {
+                setTimeout(function() {
+                    const tarjetas = document.querySelectorAll('.producto-tarjeta');
                     const filtrados = filtroActual === 'todos' 
                         ? PRODUCTOS 
                         : PRODUCTOS.filter(p => p.categoria === filtroActual);
-                    const prodEnFiltro = filtrados[idx];
                     
+                    tarjetas.forEach(function(tarjeta, idx) {
+                        const prodEnFiltro = filtrados[idx];
+                        if (prodEnFiltro && generarSlug(prodEnFiltro.nombre) === slugBuscado) {
+                            tarjeta.classList.add('abierto');
+                            tarjeta.classList.add('destacado');
+                            
+                            try {
+                                tarjeta.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'center' 
+                                });
+                            } catch(e) {
+                                // Fallback para WebViews viejos
+                                const y = tarjeta.getBoundingClientRect().top + window.pageYOffset - 120;
+                                window.scrollTo(0, y);
+                            }
+                        }
+                    });
+                }, delay);
+            });
+            
+            // Quitar el destacado después de 8 segundos
+            setTimeout(function() {
+                document.querySelectorAll('.producto-tarjeta.destacado').forEach(function(t) {
+                    t.classList.remove('destacado');
+                });
+            }, 8000);
+            
+            // Fallback crítico: al primer toque del usuario en cualquier parte, forzar el scroll
+            // Esto es lo que hace que funcione dentro del WebView de WhatsApp
+            const primerToque = function() {
+                const tarjetas = document.querySelectorAll('.producto-tarjeta');
+                const filtrados = filtroActual === 'todos' 
+                    ? PRODUCTOS 
+                    : PRODUCTOS.filter(p => p.categoria === filtroActual);
+                
+                tarjetas.forEach(function(tarjeta, idx) {
+                    const prodEnFiltro = filtrados[idx];
                     if (prodEnFiltro && generarSlug(prodEnFiltro.nombre) === slugBuscado) {
-                        // Abrir el detalle
                         tarjeta.classList.add('abierto');
-                        
-                        // Destacar con animación de pulso
                         tarjeta.classList.add('destacado');
-                        
-                        // Scroll suave al producto
-                        setTimeout(function() {
-                            tarjeta.scrollIntoView({ 
-                                behavior: 'smooth', 
-                                block: 'center' 
-                            });
-                        }, 200);
-                        
-                        // Quitar el destacado después de 5 segundos
-                        setTimeout(function() {
-                            tarjeta.classList.remove('destacado');
-                        }, 5000);
+                        try {
+                            tarjeta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } catch(e) {
+                            const y = tarjeta.getBoundingClientRect().top + window.pageYOffset - 120;
+                            window.scrollTo(0, y);
+                        }
                     }
                 });
-            }, 300);
+                
+                document.removeEventListener('touchstart', primerToque);
+                document.removeEventListener('click', primerToque);
+            };
+            
+            document.addEventListener('touchstart', primerToque, { once: true });
+            document.addEventListener('click', primerToque, { once: true });
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -2320,9 +2434,11 @@
             }
             renderizarProductos();
             actualizarCarrito();
-            
-            // Detectar si viene un producto compartido en la URL
-            setTimeout(detectarProductoCompartido, 100);
+        });
+        
+        // Ejecutar después de que TODO cargue (más confiable en WebViews)
+        window.addEventListener('load', function() {
+            setTimeout(detectarProductoCompartido, 200);
         });
 
         function renderizarProductos() {
@@ -2352,6 +2468,7 @@
                 
                 const estaEnCarrito = carrito.some(item => item.nombre === producto.nombre);
                 const indexReal = PRODUCTOS.indexOf(producto);
+                const slug = generarSlug(producto.nombre);
                 
                 const contenidoImagen = producto.foto 
                     ? `<img src="${producto.foto}" alt="${producto.nombre}" loading="lazy">` 
@@ -2363,6 +2480,7 @@
                 
                 const tarjeta = document.createElement('div');
                 tarjeta.className = 'producto-tarjeta';
+                tarjeta.id = 'producto-' + slug;
                 tarjeta.innerHTML = `
                     <div class="producto-cabecera" onclick="toggleDetalleProducto(this)">
                         <div class="producto-imagen">
@@ -2383,8 +2501,8 @@
                                 <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
                                 ${estaEnCarrito ? 'En el carrito' : 'Agregar al carrito'}
                             </button>
-                            <button class="boton-compartir" onclick="event.stopPropagation(); compartirProducto(${indexReal})" title="Compartir por WhatsApp" aria-label="Compartir por WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
+                            <button class="boton-compartir" onclick="event.stopPropagation(); compartirProducto(${indexReal})" title="Copiar link del producto" aria-label="Copiar link del producto">
+                                <i class="fas fa-link"></i>
                             </button>
                         </div>
                     </div>
