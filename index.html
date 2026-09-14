@@ -539,10 +539,26 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         .producto-tarjeta:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-duro-hover);
+        }
+        /* RESALTADO DEL PRODUCTO COMPARTIDO */
+        .producto-tarjeta.destacado {
+            animation: pulso-destacado 1.2s ease-in-out infinite;
+            border-color: var(--acento);
+            box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.3), 10px 10px 0px var(--acento);
+            z-index: 5;
+        }
+        @keyframes pulso-destacado {
+            0%, 100% {
+                box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.3), 10px 10px 0px var(--acento);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(0, 123, 255, 0.5), 10px 10px 0px var(--acento);
+            }
         }
         .producto-cabecera {
             cursor: pointer;
@@ -657,6 +673,11 @@
         .producto-precio .precio-valor {
             color: var(--acento);
         }
+        .producto-acciones {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: stretch;
+        }
         .boton-agregar {
             display: flex;
             align-items: center;
@@ -671,7 +692,7 @@
             border-radius: var(--radius-sm);
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
+            flex: 1;
             -webkit-tap-highlight-color: transparent;
         }
         .boton-agregar:hover {
@@ -683,6 +704,68 @@
         .boton-agregar.agregado {
             background: #1da851;
             border-color: #1da851;
+        }
+        .boton-compartir {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--verde-wsp);
+            color: var(--blanco);
+            border: 2px solid var(--negro);
+            width: 44px;
+            min-width: 44px;
+            font-size: 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+        .boton-compartir:hover {
+            background: var(--negro);
+            color: var(--verde-wsp);
+            transform: translateY(-2px);
+        }
+        .boton-compartir:active { transform: scale(0.95); }
+
+        /* TOAST DE NOTIFICACIÓN */
+        .toast-notificacion {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--negro);
+            color: var(--blanco);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-full);
+            border: 2px solid var(--verde-wsp);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 20px rgba(37, 211, 102, 0.4);
+            font-weight: bold;
+            font-size: var(--font-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10001;
+            white-space: nowrap;
+            max-width: 90vw;
+        }
+        .toast-notificacion.activo {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast-notificacion i {
+            color: var(--verde-wsp);
+            font-size: var(--font-lg);
+        }
+        @media (max-width: 768px) {
+            .toast-notificacion {
+                bottom: 90px;
+                padding: var(--space-sm) var(--space-md);
+                font-size: var(--font-xs);
+            }
         }
 
         /* BOTÓN "VER MÁS PRODUCTOS" */
@@ -926,6 +1009,8 @@
             .carrito-burbuja { width: 55px; height: 55px; font-size: 1.4rem; }
             .carrito-panel { width: 320px; right: -10px; }
             .boton-ver-mas { padding: var(--space-md) var(--space-lg); font-size: var(--font-sm); }
+            .boton-agregar { font-size: var(--font-xs); }
+            .boton-compartir { width: 40px; min-width: 40px; font-size: 0.9rem; }
         }
 
         footer { background: var(--negro); color: white; text-align: center; padding: var(--space-lg); margin-top: var(--space-lg); }
@@ -1726,6 +1811,12 @@
         </div>
     </div>
 
+    <!-- TOAST DE NOTIFICACIÓN -->
+    <div class="toast-notificacion" id="toastNotificacion">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastTexto">Link copiado</span>
+    </div>
+
     <footer>
         <p>© 2026 M R Sistemas y Servicios. Todos los derechos reservados.</p>
         <div style="margin: var(--space-md) 0;">
@@ -1746,7 +1837,7 @@
         }
 
         document.addEventListener('click', function(e) {
-            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas');
+            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas, .boton-compartir');
             if (!elemento) return;
             vibrar();
             var rect = elemento.getBoundingClientRect();
@@ -1852,6 +1943,7 @@
         // - foto: ruta de la imagen (ej: "img/productos/mi-foto.png") o null para usar el icono
         // - precio: texto del precio (ej: "$2.245.000") o null para "Precio según disponibilidad"
         // ⚠️ IMPORTANTE: Cada propiedad termina en COMA, y los textos van entre COMILLAS
+        // 🔗 El link para compartir se genera automáticamente desde el nombre del producto.
         
         const PRODUCTOS = [
             { 
@@ -2056,8 +2148,168 @@
 
         let carrito = [];
         let filtroActual = 'todos';
-        let productosVisibles = 12;      // Cantidad inicial visible
-        const PRODUCTOS_POR_CARGA = 12;  // Cantidad que se agrega cada vez que se presiona "Ver más"
+        let productosVisibles = 12;
+        const PRODUCTOS_POR_CARGA = 12;
+
+        // ============================================
+        // UTILIDAD: Generar slug desde nombre
+        // Ejemplo: "Portátil HP 15 Essential" → "portatil-hp-15-essential"
+        // ============================================
+        function generarSlug(texto) {
+            return texto
+                .toString()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')   // Quitar tildes
+                .replace(/ñ/g, 'n')
+                .replace(/[^a-z0-9\s-]/g, '')      // Quitar símbolos
+                .replace(/\s+/g, '-')              // Espacios → guiones
+                .replace(/-+/g, '-')               // Múltiples guiones → uno
+                .replace(/^-+|-+$/g, '');          // Quitar guiones al inicio/final
+        }
+
+        // ============================================
+        // UTILIDAD: Obtener URL base automáticamente
+        // Funciona en GitHub Pages, local y cualquier hosting futuro
+        // ============================================
+        function obtenerUrlBase() {
+            let path = window.location.pathname;
+            // Quitar index.html si está presente
+            path = path.replace(/index\.html$/i, '');
+            // Asegurar que termine en /
+            if (!path.endsWith('/')) path += '/';
+            return window.location.origin + path;
+        }
+
+        // ============================================
+        // TOAST: Notificación breve
+        // ============================================
+        let toastTimer = null;
+        function mostrarToast(texto, icono) {
+            const toast = document.getElementById('toastNotificacion');
+            const textoEl = document.getElementById('toastTexto');
+            const iconoEl = toast.querySelector('i');
+            if (!toast || !textoEl) return;
+            
+            textoEl.textContent = texto;
+            if (icono) {
+                iconoEl.className = icono;
+            }
+            
+            toast.classList.add('activo');
+            
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(function() {
+                toast.classList.remove('activo');
+            }, 2500);
+        }
+
+        // ============================================
+        // COMPARTIR PRODUCTO POR WHATSAPP
+        // ============================================
+        function compartirProducto(index) {
+            const producto = PRODUCTOS[index];
+            if (!producto) return;
+            
+            const slug = generarSlug(producto.nombre);
+            const url = obtenerUrlBase() + '?producto=' + slug;
+            const mensaje = 'Hola, mira este equipo: ' + url;
+            const urlWhatsApp = 'https://wa.me/?text=' + encodeURIComponent(mensaje);
+            
+            mostrarToast('Abriendo WhatsApp...', 'fab fa-whatsapp');
+            
+            // Pequeño delay para que se vea el toast antes de abrir WhatsApp
+            setTimeout(function() {
+                window.open(urlWhatsApp, '_blank');
+            }, 400);
+        }
+
+        // ============================================
+        // LEER URL Y RESALTAR PRODUCTO COMPARTIDO
+        // ============================================
+        function detectarProductoCompartido() {
+            const params = new URLSearchParams(window.location.search);
+            const slugBuscado = params.get('producto');
+            if (!slugBuscado) return;
+            
+            // Buscar producto por slug
+            let productoEncontrado = null;
+            let indexEncontrado = -1;
+            
+            PRODUCTOS.forEach(function(prod, idx) {
+                if (generarSlug(prod.nombre) === slugBuscado) {
+                    productoEncontrado = prod;
+                    indexEncontrado = idx;
+                }
+            });
+            
+            if (!productoEncontrado) return;
+            
+            // Cambiar el filtro a la categoría del producto y mostrar todos
+            filtroActual = productoEncontrado.categoria;
+            productosVisibles = PRODUCTOS.length; // Mostrar todos para asegurar que el producto esté visible
+            
+            // Actualizar botones de filtro visualmente
+            document.querySelectorAll('.filtro-btn').forEach(function(btn) {
+                btn.classList.remove('activo');
+                if (btn.textContent.trim().toLowerCase().indexOf(productoEncontrado.categoria.toLowerCase().substring(0, 5)) !== -1 ||
+                    btn.textContent.trim() === 'Todos') {
+                    // No hacemos nada, solo evitamos errores
+                }
+            });
+            // Marcar el botón correcto
+            const botones = document.querySelectorAll('.filtro-btn');
+            const mapaCategoria = {
+                'Corporativo': 'Corporativos',
+                'Consumo': 'Consumo',
+                'Gamer': 'Gamer',
+                'Segunda': 'Segunda',
+                'Componentes': 'Componentes',
+                'Periféricos': 'Periféricos'
+            };
+            const textoBoton = mapaCategoria[productoEncontrado.categoria] || 'Todos';
+            botones.forEach(function(btn) {
+                if (btn.textContent.trim() === textoBoton) {
+                    btn.classList.add('activo');
+                }
+            });
+            
+            // Re-renderizar
+            renderizarProductos();
+            
+            // Esperar un momento para que se renderice y luego scroll + destacar
+            setTimeout(function() {
+                const tarjetas = document.querySelectorAll('.producto-tarjeta');
+                tarjetas.forEach(function(tarjeta, idx) {
+                    // Buscar el índice del producto dentro del filtro actual
+                    const filtrados = filtroActual === 'todos' 
+                        ? PRODUCTOS 
+                        : PRODUCTOS.filter(p => p.categoria === filtroActual);
+                    const prodEnFiltro = filtrados[idx];
+                    
+                    if (prodEnFiltro && generarSlug(prodEnFiltro.nombre) === slugBuscado) {
+                        // Abrir el detalle
+                        tarjeta.classList.add('abierto');
+                        
+                        // Destacar con animación de pulso
+                        tarjeta.classList.add('destacado');
+                        
+                        // Scroll suave al producto
+                        setTimeout(function() {
+                            tarjeta.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'center' 
+                            });
+                        }, 200);
+                        
+                        // Quitar el destacado después de 5 segundos
+                        setTimeout(function() {
+                            tarjeta.classList.remove('destacado');
+                        }, 5000);
+                    }
+                });
+            }, 300);
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             const guardado = localStorage.getItem('carritoMR');
@@ -2068,6 +2320,9 @@
             }
             renderizarProductos();
             actualizarCarrito();
+            
+            // Detectar si viene un producto compartido en la URL
+            setTimeout(detectarProductoCompartido, 100);
         });
 
         function renderizarProductos() {
@@ -2077,7 +2332,6 @@
             if (!grid) return;
             grid.innerHTML = '';
             
-            // Filtrar según categoría activa
             const filtrados = filtroActual === 'todos' 
                 ? PRODUCTOS 
                 : PRODUCTOS.filter(p => p.categoria === filtroActual);
@@ -2089,7 +2343,6 @@
                 return;
             }
             
-            // Aplicar límite de visibles
             const visibles = filtrados.slice(0, productosVisibles);
             
             visibles.forEach((producto) => {
@@ -2125,16 +2378,20 @@
                     <div class="producto-detalle">
                         <p class="producto-specs">${producto.especificaciones}</p>
                         <p class="producto-precio">${contenidoPrecio}</p>
-                        <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="event.stopPropagation(); toggleProductoCarrito(${indexReal})">
-                            <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
-                            ${estaEnCarrito ? 'En el carrito' : 'Agregar al carrito'}
-                        </button>
+                        <div class="producto-acciones">
+                            <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="event.stopPropagation(); toggleProductoCarrito(${indexReal})">
+                                <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
+                                ${estaEnCarrito ? 'En el carrito' : 'Agregar al carrito'}
+                            </button>
+                            <button class="boton-compartir" onclick="event.stopPropagation(); compartirProducto(${indexReal})" title="Compartir por WhatsApp" aria-label="Compartir por WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(tarjeta);
             });
             
-            // Manejar botón "Ver más"
             if (botonVerMas) {
                 if (productosVisibles >= filtrados.length) {
                     botonVerMas.classList.add('agotado');
@@ -2145,7 +2402,6 @@
                 }
             }
             
-            // Contador
             if (contador) {
                 const mostrados = Math.min(productosVisibles, filtrados.length);
                 contador.textContent = `Mostrando ${mostrados} de ${filtrados.length} productos`;
@@ -2170,7 +2426,7 @@
 
         function filtrarProductos(categoria, boton) {
             filtroActual = categoria;
-            productosVisibles = PRODUCTOS_POR_CARGA; // Reset al cambiar filtro
+            productosVisibles = PRODUCTOS_POR_CARGA;
             document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
             renderizarProductos();
