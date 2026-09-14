@@ -544,6 +544,11 @@
             transform: translateY(-5px);
             box-shadow: var(--shadow-duro-hover);
         }
+        .producto-cabecera {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
         .producto-imagen {
             height: 160px;
             background: linear-gradient(135deg, var(--gris-claro), var(--blanco));
@@ -553,6 +558,13 @@
             font-size: 4rem;
             border-bottom: 2px solid var(--negro);
             position: relative;
+            overflow: hidden;
+        }
+        .producto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .producto-estado {
             position: absolute;
@@ -565,15 +577,17 @@
             color: var(--blanco);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            z-index: 2;
         }
         .estado-nuevo { background: #1da851; }
         .estado-usado { background: #d97706; }
         .estado-consultar { background: var(--acento); }
-        .producto-cuerpo {
+        .producto-info-rapida {
             padding: var(--space-md);
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            gap: var(--space-xs);
+            position: relative;
         }
         .producto-categoria {
             display: inline-block;
@@ -583,7 +597,6 @@
             font-weight: bold;
             padding: 3px 10px;
             border-radius: var(--radius-full);
-            margin-bottom: var(--space-sm);
             text-transform: uppercase;
             letter-spacing: 1px;
             align-self: flex-start;
@@ -592,21 +605,57 @@
             font-size: var(--font-md);
             font-weight: 800;
             color: var(--negro);
-            margin: 0 0 var(--space-sm) 0;
+            margin: 0;
             line-height: 1.3;
+            padding-right: 30px;
+        }
+        .producto-flecha {
+            position: absolute;
+            right: var(--space-md);
+            bottom: var(--space-md);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--negro);
+            color: var(--blanco);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .producto-tarjeta.abierto .producto-flecha {
+            transform: rotate(180deg);
+            background: var(--acento);
+        }
+        .producto-detalle {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 var(--space-md);
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+        .producto-tarjeta.abierto .producto-detalle {
+            max-height: 500px;
+            padding: var(--space-md);
+            border-top: 2px dashed var(--gris-claro);
         }
         .producto-specs {
             font-size: var(--font-sm);
             color: var(--gris-oscuro);
             line-height: 1.5;
-            margin-bottom: var(--space-md);
-            flex-grow: 1;
+            margin: 0 0 var(--space-sm) 0;
         }
         .producto-precio {
-            font-size: var(--font-xs);
-            color: var(--gris-oscuro);
-            font-style: italic;
-            margin-bottom: var(--space-sm);
+            font-size: var(--font-md);
+            color: var(--negro);
+            font-weight: bold;
+            margin: 0 0 var(--space-md) 0;
+        }
+        .producto-precio .precio-valor {
+            color: var(--acento);
         }
         .boton-agregar {
             display: flex;
@@ -634,6 +683,58 @@
         .boton-agregar.agregado {
             background: #1da851;
             border-color: #1da851;
+        }
+
+        /* BOTÓN "VER MÁS PRODUCTOS" */
+        .contenedor-ver-mas {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+        .boton-ver-mas {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--blanco);
+            color: var(--negro);
+            border: 3px solid var(--negro);
+            padding: var(--space-md) var(--space-xl);
+            font-weight: 800;
+            font-size: var(--font-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--negro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-ver-mas:hover {
+            background: var(--acento);
+            color: var(--blanco);
+            border-color: var(--acento);
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0px var(--negro);
+        }
+        .boton-ver-mas:active { transform: translateY(0) scale(0.97); box-shadow: 4px 4px 0px var(--negro); }
+        .boton-ver-mas.agotado {
+            background: var(--gris-claro);
+            color: var(--gris-oscuro);
+            border-color: var(--gris-oscuro);
+            box-shadow: 4px 4px 0px var(--gris-oscuro);
+            cursor: default;
+            pointer-events: none;
+            font-size: var(--font-sm);
+            opacity: 0.8;
+        }
+        .contador-productos {
+            display: block;
+            text-align: center;
+            margin-top: var(--space-md);
+            font-size: var(--font-sm);
+            color: var(--gris-oscuro);
+            font-style: italic;
         }
 
         /* CARRITO FLOTANTE */
@@ -765,6 +866,12 @@
             align-items: center;
             font-size: 1.2rem;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+        .carrito-item-icono img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .carrito-item-info {
             flex-grow: 1;
@@ -818,6 +925,7 @@
             .carrito-widget { right: 90px; bottom: 20px; }
             .carrito-burbuja { width: 55px; height: 55px; font-size: 1.4rem; }
             .carrito-panel { width: 320px; right: -10px; }
+            .boton-ver-mas { padding: var(--space-md) var(--space-lg); font-size: var(--font-sm); }
         }
 
         footer { background: var(--negro); color: white; text-align: center; padding: var(--space-lg); margin-top: var(--space-lg); }
@@ -1259,6 +1367,13 @@
         </div>
 
         <div class="tienda-grid" id="tiendaGrid"></div>
+
+        <div class="contenedor-ver-mas">
+            <button class="boton-ver-mas" id="botonVerMas" onclick="cargarMasProductos()">
+                <i class="fas fa-plus-circle"></i> Ver más productos
+            </button>
+        </div>
+        <span class="contador-productos" id="contadorProductos"></span>
     </section>
 
     <section class="banner-domicilio">
@@ -1557,7 +1672,7 @@
     <div class="carrito-widget">
         <div class="carrito-panel" id="carritoPanel">
             <div class="carrito-header">
-                <h4><i class="fas fa-shopping-cart"></i> Tu cotización</h4>
+                <h4><i class="fas fa-file-invoice"></i> Solicitud de cotización</h4>
                 <button onclick="toggleCarrito()">&times;</button>
             </div>
             <div class="carrito-items" id="carritoItems">
@@ -1568,9 +1683,9 @@
             </div>
             <div class="carrito-footer">
                 <button type="button" class="boton-whatsapp" onclick="enviarCotizacion()">
-                    <i class="fab fa-whatsapp"></i> Enviar cotización
+                    <i class="fab fa-whatsapp"></i> Solicitar cotización formal
                 </button>
-                <p class="carrito-nota">Al enviar, te cotizamos cada producto según disponibilidad actual.</p>
+                <p class="carrito-nota">Recibirá respuesta con precios y disponibilidad en horario comercial.</p>
             </div>
         </div>
         <div class="carrito-burbuja" onclick="toggleCarrito()">
@@ -1631,7 +1746,7 @@
         }
 
         document.addEventListener('click', function(e) {
-            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja');
+            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas');
             if (!elemento) return;
             vibrar();
             var rect = elemento.getBoundingClientRect();
@@ -1727,33 +1842,219 @@
         // TIENDA DE PRODUCTOS Y CARRITO
         // ============================================
         
+        // 📸 ESTRUCTURA DE PRODUCTOS
+        // Para agregar/modificar:
+        // - foto: ruta de la imagen (ej: "img/productos/mi-foto.jpg") o null para usar el icono
+        // - precio: texto del precio (ej: "$2.850.000") o null para "Precio según disponibilidad"
+        // - icono: emoji de respaldo si no hay foto
+        // - categoria: Corporativo, Consumo, Gamer, Segunda, Componentes, Periféricos
+        // - estado: Nuevo, Usado, Consultar
+        
         const PRODUCTOS = [
-            { nombre: "Portátil HP ProBook 450", categoria: "Corporativo", especificaciones: "Core i5 11va, 8GB RAM, 256GB SSD", estado: "Nuevo", icono: "💻" },
-            { nombre: "Portátil Lenovo ThinkPad T14", categoria: "Corporativo", especificaciones: "Core i7 12va, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "💻" },
-            { nombre: "Portátil Dell Latitude 5420", categoria: "Corporativo", especificaciones: "Core i5 11va, 16GB RAM, 256GB SSD", estado: "Usado", icono: "💻" },
-            { nombre: "Portátil Acer Aspire 3", categoria: "Consumo", especificaciones: "Ryzen 5, 8GB RAM, 256GB SSD", estado: "Nuevo", icono: "🖥️" },
-            { nombre: "Portátil ASUS VivoBook", categoria: "Consumo", especificaciones: "Core i3 12va, 8GB RAM, 512GB SSD", estado: "Nuevo", icono: "🖥️" },
-            { nombre: "Portátil HP 15 Essential", categoria: "Consumo", especificaciones: "Core i5, 8GB RAM, 1TB HDD", estado: "Usado", icono: "🖥️" },
-            { nombre: "Portátil ASUS ROG Strix G16", categoria: "Gamer", especificaciones: "Core i7, RTX 4060, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "🎮" },
-            { nombre: "Portátil Lenovo LOQ 15", categoria: "Gamer", especificaciones: "Ryzen 7, RTX 4050, 16GB RAM, 512GB SSD", estado: "Nuevo", icono: "🎮" },
-            { nombre: "Portátil MSI Katana 15", categoria: "Gamer", especificaciones: "Core i7, RTX 3050, 8GB RAM, 512GB SSD", estado: "Consultar", icono: "🎮" },
-            { nombre: "SSD Kingston NV2 500GB NVMe", categoria: "Componentes", especificaciones: "M.2 NVMe PCIe 4.0", estado: "Nuevo", icono: "💾" },
-            { nombre: "SSD Samsung 980 1TB NVMe", categoria: "Componentes", especificaciones: "M.2 NVMe PCIe 3.0", estado: "Nuevo", icono: "💾" },
-            { nombre: "Memoria RAM DDR4 8GB", categoria: "Componentes", especificaciones: "2666MHz SODIMM portátil", estado: "Nuevo", icono: "🔌" },
-            { nombre: "Memoria RAM DDR4 16GB", categoria: "Componentes", especificaciones: "3200MHz SODIMM portátil", estado: "Nuevo", icono: "🔌" },
-            { nombre: "Pantalla para portátil 15.6\"", categoria: "Componentes", especificaciones: "FHD 1920x1080 30 pines", estado: "Consultar", icono: "📺" },
-            { nombre: "Batería para portátil HP", categoria: "Componentes", especificaciones: "Compatible modelos HP Pavilion y ProBook", estado: "Consultar", icono: "🔋" },
-            { nombre: "Cargador para portátil Lenovo", categoria: "Componentes", especificaciones: "65W USB-C original", estado: "Nuevo", icono: "🔌" },
-            { nombre: "Mouse Logitech M170", categoria: "Periféricos", especificaciones: "Inalámbrico USB", estado: "Nuevo", icono: "🖱️" },
-            { nombre: "Teclado Logitech K120", categoria: "Periféricos", especificaciones: "USB estándar español", estado: "Nuevo", icono: "⌨️" },
-            { nombre: "Impresora Epson L3250", categoria: "Periféricos", especificaciones: "Multifuncional WiFi tanque de tinta", estado: "Nuevo", icono: "🖨️" },
-            { nombre: "Laptop HP EliteBook 840 G5", categoria: "Segunda", especificaciones: "Core i5 8va, 8GB RAM, 256GB SSD", estado: "Usado", icono: "💻" },
-            { nombre: "Laptop Dell Latitude 7490", categoria: "Segunda", especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", estado: "Usado", icono: "💻" },
-            { nombre: "Laptop Lenovo ThinkPad X1 Carbon", categoria: "Segunda", especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", estado: "Usado", icono: "💻" }
+            { 
+                nombre: "Portátil HP ProBook 450", 
+                categoria: "Corporativo", 
+                especificaciones: "Core i5 11va, 8GB RAM, 256GB SSD", 
+                estado: "Nuevo", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Lenovo ThinkPad T14", 
+                categoria: "Corporativo", 
+                especificaciones: "Core i7 12va, 16GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Dell Latitude 5420", 
+                categoria: "Corporativo", 
+                especificaciones: "Core i5 11va, 16GB RAM, 256GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Acer Aspire 3", 
+                categoria: "Consumo", 
+                especificaciones: "Ryzen 5, 8GB RAM, 256GB SSD", 
+                estado: "Nuevo", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil ASUS VivoBook", 
+                categoria: "Consumo", 
+                especificaciones: "Core i3 12va, 8GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil HP 15 Essential", 
+                categoria: "Consumo", 
+                especificaciones: "Core i5, 8GB RAM, 1TB HDD", 
+                estado: "Usado", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil ASUS ROG Strix G16", 
+                categoria: "Gamer", 
+                especificaciones: "Core i7, RTX 4060, 16GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Lenovo LOQ 15", 
+                categoria: "Gamer", 
+                especificaciones: "Ryzen 7, RTX 4050, 16GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil MSI Katana 15", 
+                categoria: "Gamer", 
+                especificaciones: "Core i7, RTX 3050, 8GB RAM, 512GB SSD", 
+                estado: "Consultar", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "SSD Kingston NV2 500GB NVMe", 
+                categoria: "Componentes", 
+                especificaciones: "M.2 NVMe PCIe 4.0", 
+                estado: "Nuevo", 
+                icono: "💾",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "SSD Samsung 980 1TB NVMe", 
+                categoria: "Componentes", 
+                especificaciones: "M.2 NVMe PCIe 3.0", 
+                estado: "Nuevo", 
+                icono: "💾",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Memoria RAM DDR4 8GB", 
+                categoria: "Componentes", 
+                especificaciones: "2666MHz SODIMM portátil", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Memoria RAM DDR4 16GB", 
+                categoria: "Componentes", 
+                especificaciones: "3200MHz SODIMM portátil", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Pantalla para portátil 15.6\"", 
+                categoria: "Componentes", 
+                especificaciones: "FHD 1920x1080 30 pines", 
+                estado: "Consultar", 
+                icono: "📺",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Batería para portátil HP", 
+                categoria: "Componentes", 
+                especificaciones: "Compatible modelos HP Pavilion y ProBook", 
+                estado: "Consultar", 
+                icono: "🔋",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Cargador para portátil Lenovo", 
+                categoria: "Componentes", 
+                especificaciones: "65W USB-C original", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Mouse Logitech M170", 
+                categoria: "Periféricos", 
+                especificaciones: "Inalámbrico USB", 
+                estado: "Nuevo", 
+                icono: "🖱️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Teclado Logitech K120", 
+                categoria: "Periféricos", 
+                especificaciones: "USB estándar español", 
+                estado: "Nuevo", 
+                icono: "⌨️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Impresora Epson L3250", 
+                categoria: "Periféricos", 
+                especificaciones: "Multifuncional WiFi tanque de tinta", 
+                estado: "Nuevo", 
+                icono: "🖨️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Laptop HP EliteBook 840 G5", 
+                categoria: "Segunda", 
+                especificaciones: "Core i5 8va, 8GB RAM, 256GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Laptop Dell Latitude 7490", 
+                categoria: "Segunda", 
+                especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Laptop Lenovo ThinkPad X1 Carbon", 
+                categoria: "Segunda", 
+                especificaciones: "Core i7 8va, 16GB RAM, 512GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            }
         ];
 
         let carrito = [];
         let filtroActual = 'todos';
+        let productosVisibles = 12;      // Cantidad inicial visible
+        const PRODUCTOS_POR_CARGA = 12;  // Cantidad que se agrega cada vez que se presiona "Ver más"
 
         document.addEventListener('DOMContentLoaded', function() {
             const guardado = localStorage.getItem('carritoMR');
@@ -1768,19 +2069,27 @@
 
         function renderizarProductos() {
             const grid = document.getElementById('tiendaGrid');
+            const botonVerMas = document.getElementById('botonVerMas');
+            const contador = document.getElementById('contadorProductos');
             if (!grid) return;
             grid.innerHTML = '';
             
+            // Filtrar según categoría activa
             const filtrados = filtroActual === 'todos' 
                 ? PRODUCTOS 
                 : PRODUCTOS.filter(p => p.categoria === filtroActual);
             
             if (filtrados.length === 0) {
                 grid.innerHTML = '<p style="text-align:center; color:#888; grid-column: 1/-1; padding: 40px;">No hay productos en esta categoría por ahora.</p>';
+                if (botonVerMas) botonVerMas.style.display = 'none';
+                if (contador) contador.textContent = '';
                 return;
             }
             
-            filtrados.forEach((producto) => {
+            // Aplicar límite de visibles
+            const visibles = filtrados.slice(0, productosVisibles);
+            
+            visibles.forEach((producto) => {
                 const claseEstado = producto.estado === 'Nuevo' ? 'estado-nuevo' 
                                   : producto.estado === 'Usado' ? 'estado-usado' 
                                   : 'estado-consultar';
@@ -1788,30 +2097,77 @@
                 const estaEnCarrito = carrito.some(item => item.nombre === producto.nombre);
                 const indexReal = PRODUCTOS.indexOf(producto);
                 
+                const contenidoImagen = producto.foto 
+                    ? `<img src="${producto.foto}" alt="${producto.nombre}" loading="lazy">` 
+                    : producto.icono;
+                
+                const contenidoPrecio = producto.precio 
+                    ? `Precio: <span class="precio-valor">${producto.precio}</span>` 
+                    : 'Precio según disponibilidad';
+                
                 const tarjeta = document.createElement('div');
                 tarjeta.className = 'producto-tarjeta';
                 tarjeta.innerHTML = `
-                    <div class="producto-imagen">
-                        <span class="producto-estado ${claseEstado}">${producto.estado}</span>
-                        ${producto.icono}
+                    <div class="producto-cabecera" onclick="toggleDetalleProducto(this)">
+                        <div class="producto-imagen">
+                            <span class="producto-estado ${claseEstado}">${producto.estado}</span>
+                            ${contenidoImagen}
+                        </div>
+                        <div class="producto-info-rapida">
+                            <span class="producto-categoria">${producto.categoria}</span>
+                            <h3 class="producto-titulo">${producto.nombre}</h3>
+                            <span class="producto-flecha"><i class="fas fa-chevron-down"></i></span>
+                        </div>
                     </div>
-                    <div class="producto-cuerpo">
-                        <span class="producto-categoria">${producto.categoria}</span>
-                        <h3 class="producto-titulo">${producto.nombre}</h3>
+                    <div class="producto-detalle">
                         <p class="producto-specs">${producto.especificaciones}</p>
-                        <p class="producto-precio">💬 Precio según disponibilidad</p>
-                        <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="toggleProductoCarrito(${indexReal})">
+                        <p class="producto-precio">${contenidoPrecio}</p>
+                        <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="event.stopPropagation(); toggleProductoCarrito(${indexReal})">
                             <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
-                            ${estaEnCarrito ? 'Agregado' : 'Agregar a cotización'}
+                            ${estaEnCarrito ? 'En el carrito' : 'Agregar al carrito'}
                         </button>
                     </div>
                 `;
                 grid.appendChild(tarjeta);
             });
+            
+            // Manejar botón "Ver más"
+            if (botonVerMas) {
+                if (productosVisibles >= filtrados.length) {
+                    botonVerMas.classList.add('agotado');
+                    botonVerMas.innerHTML = '<i class="fas fa-check-circle"></i> Has visto todos los productos';
+                } else {
+                    botonVerMas.classList.remove('agotado');
+                    botonVerMas.innerHTML = '<i class="fas fa-plus-circle"></i> Ver más productos';
+                }
+            }
+            
+            // Contador
+            if (contador) {
+                const mostrados = Math.min(productosVisibles, filtrados.length);
+                contador.textContent = `Mostrando ${mostrados} de ${filtrados.length} productos`;
+            }
+        }
+
+        function cargarMasProductos() {
+            const filtrados = filtroActual === 'todos' 
+                ? PRODUCTOS 
+                : PRODUCTOS.filter(p => p.categoria === filtroActual);
+            
+            if (productosVisibles >= filtrados.length) return;
+            
+            productosVisibles += PRODUCTOS_POR_CARGA;
+            renderizarProductos();
+        }
+
+        function toggleDetalleProducto(elemento) {
+            const tarjeta = elemento.closest('.producto-tarjeta');
+            tarjeta.classList.toggle('abierto');
         }
 
         function filtrarProductos(categoria, boton) {
             filtroActual = categoria;
+            productosVisibles = PRODUCTOS_POR_CARGA; // Reset al cambiar filtro
             document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
             renderizarProductos();
@@ -1829,7 +2185,9 @@
                     categoria: producto.categoria,
                     especificaciones: producto.especificaciones,
                     estado: producto.estado,
-                    icono: producto.icono 
+                    icono: producto.icono,
+                    foto: producto.foto,
+                    precio: producto.precio
                 });
             }
             
@@ -1858,10 +2216,14 @@
             
             items.innerHTML = '';
             carrito.forEach((item, index) => {
+                const iconoCarrito = item.foto 
+                    ? `<img src="${item.foto}" alt="${item.nombre}">` 
+                    : item.icono;
+                
                 const div = document.createElement('div');
                 div.className = 'carrito-item';
                 div.innerHTML = `
-                    <div class="carrito-item-icono">${item.icono}</div>
+                    <div class="carrito-item-icono">${iconoCarrito}</div>
                     <div class="carrito-item-info">
                         <strong>${item.nombre}</strong>
                         <span>${item.categoria} · ${item.estado}</span>
@@ -1892,13 +2254,15 @@
             }
             
             const numeroWhatsApp = "573113944320";
-            let texto = "Hola, me interesa cotizar los siguientes productos:\n\n";
+            let texto = "Buen día, solicito cotización formal de los siguientes productos:\n\n";
             
             carrito.forEach((item, i) => {
-                texto += `${i + 1}. ${item.nombre}\n   📋 ${item.especificaciones}\n   🏷️ ${item.categoria} · ${item.estado}\n\n`;
+                texto += `${i + 1}. ${item.nombre}\n`;
+                texto += `   Especificaciones: ${item.especificaciones}\n`;
+                texto += `   Categoria: ${item.categoria} - Estado: ${item.estado}\n\n`;
             });
             
-            texto += "¿Me pueden informar precios y disponibilidad actual? Gracias.";
+            texto += "Quedo atento a precios, disponibilidad y condiciones de pago. Gracias.";
             
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
