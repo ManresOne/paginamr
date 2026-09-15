@@ -534,13 +534,13 @@
             box-shadow: 4px 4px 0px var(--acento);
         }
         .tienda-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-lg);
-    max-width: 1300px;
-    margin: 0 auto;
-    align-items: start;
-}
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: start;
+        }
         .producto-tarjeta {
             background: var(--blanco);
             border: 3px solid var(--negro);
@@ -1159,7 +1159,6 @@
     </style>
 </head>
 <body>
-
     <header>
         <a href="#inicio" class="logo-link">
             <img src="img/logo.png" alt="Logo M R Sistemas y Servicios">
@@ -1579,8 +1578,8 @@
         </div>
         
         <div class="tienda-filtros">
-            <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">Todos</button>
-            <button class="filtro-btn" onclick="filtrarProductos('Corporativo', this)">Corporativos</button>
+            <button class="filtro-btn" onclick="filtrarProductos('todos', this)">Todos</button>
+            <button class="filtro-btn activo" onclick="filtrarProductos('Corporativo', this)">Corporativos</button>
             <button class="filtro-btn" onclick="filtrarProductos('Consumo', this)">Consumo</button>
             <button class="filtro-btn" onclick="filtrarProductos('Gamer', this)">Gamer</button>
             <button class="filtro-btn" onclick="filtrarProductos('Segunda', this)">Segunda</button>
@@ -1623,12 +1622,6 @@
                 <h3>Brochure General</h3>
                 <p>Vista previa y descarga del portafolio de servicios.</p>
                 <a href="https://drive.google.com/file/d/172tVXVX6GBXfG6grzs9RkUZ52c8DppmT/preview" target="_blank" class="boton-glass">Ver / Descargar</a>
-            </div>
-            <div class="tarjeta-descarga">
-                <i class="fab fa-whatsapp"></i>
-                <h3>Catálogo de Equipos</h3>
-                <p>Ver nuestro catálogo actualizado en WhatsApp Business.</p>
-                <a href="https://wa.me/c/573113944320?text=Hola,%20vi%20su%20cat%C3%A1logo%20en%20la%20web%20y%20me%20interesa%20un%20equipo" target="_blank" class="boton-glass">Ir al Catálogo</a>
             </div>
             
             <div id="acceso-privado" class="acceso-privado">
@@ -2292,7 +2285,7 @@
         ];
 
         let carrito = [];
-        let filtroActual = 'todos';
+        let filtroActual = 'Corporativo';
         let productosVisibles = 12;
         const PRODUCTOS_POR_CARGA = 12;
 
@@ -2357,7 +2350,6 @@
             const slug = generarSlug(producto.nombre);
             const url = obtenerUrlBase() + '?producto=' + slug;
             
-            // Intentar con la API moderna de portapapeles
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(url).then(function() {
                     mostrarToast('Link copiado. Pegalo en tu chat', 'fas fa-check-circle');
@@ -2369,7 +2361,6 @@
             }
         }
 
-        // Fallback para navegadores sin clipboard API (WebView antiguo de WhatsApp, etc.)
         function copiarFallback(url) {
             const input = document.createElement('textarea');
             input.value = url;
@@ -2411,7 +2402,6 @@
             const slugBuscado = params.get('producto');
             if (!slugBuscado) return;
             
-            // Buscar producto por slug
             let productoEncontrado = null;
             PRODUCTOS.forEach(function(prod) {
                 if (generarSlug(prod.nombre) === slugBuscado) {
@@ -2423,11 +2413,9 @@
             
             productoCompartidoDetectado = true;
             
-            // Cambiar filtro a la categoría del producto y mostrar todos
             filtroActual = productoEncontrado.categoria;
             productosVisibles = PRODUCTOS.length;
             
-            // Marcar el botón correcto
             const mapaCategoria = {
                 'Corporativo': 'Corporativos',
                 'Consumo': 'Consumo',
@@ -2444,14 +2432,11 @@
                 }
             });
             
-            // Mostrar el banner
             const banner = document.getElementById('bannerCompartido');
             if (banner) banner.classList.add('visible');
             
-            // Re-renderizar
             renderizarProductos();
             
-            // Scroll y resaltado con múltiples intentos (para WebView de WhatsApp)
             scrollYDestacar(slugBuscado);
         }
         
@@ -2477,7 +2462,6 @@
                                     block: 'center' 
                                 });
                             } catch(e) {
-                                // Fallback para WebViews viejos
                                 const y = tarjeta.getBoundingClientRect().top + window.pageYOffset - 120;
                                 window.scrollTo(0, y);
                             }
@@ -2486,15 +2470,12 @@
                 }, delay);
             });
             
-            // Quitar el destacado después de 8 segundos
             setTimeout(function() {
                 document.querySelectorAll('.producto-tarjeta.destacado').forEach(function(t) {
                     t.classList.remove('destacado');
                 });
             }, 8000);
             
-            // Fallback crítico: al primer toque del usuario en cualquier parte, forzar el scroll
-            // Esto es lo que hace que funcione dentro del WebView de WhatsApp
             const primerToque = function() {
                 const tarjetas = document.querySelectorAll('.producto-tarjeta');
                 const filtrados = filtroActual === 'todos' 
@@ -2534,7 +2515,6 @@
             actualizarCarrito();
         });
         
-        // Ejecutar después de que TODO cargue (más confiable en WebViews)
         window.addEventListener('load', function() {
             setTimeout(detectarProductoCompartido, 200);
         });
@@ -2827,4 +2807,4 @@
         });
     </script>
 </body>
-</html>
+</html>    
