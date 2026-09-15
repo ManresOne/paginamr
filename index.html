@@ -78,6 +78,16 @@
         
         nav a { text-decoration: none; color: var(--negro); font-weight: bold; margin-left: var(--space-md); font-size: var(--font-sm); transition: color 0.3s; }
         nav a:hover { color: var(--acento); text-decoration: underline; }
+        nav a.nav-wsp-destacado {
+            color: var(--verde-wsp);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        nav a.nav-wsp-destacado:hover {
+            color: var(--negro);
+            text-decoration: underline;
+        }
 
         .menu-btn { display: none; font-size: var(--font-xl); background: none; border: none; color: var(--negro); cursor: pointer; }
 
@@ -862,6 +872,83 @@
             font-style: italic;
         }
 
+        /* BANNER CTA AL CATÁLOGO DE WHATSAPP */
+        .cta-catalogo-wsp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--blanco);
+            border: 3px solid var(--negro);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-duro);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .cta-catalogo-wsp h3 {
+            margin: 0;
+            font-size: var(--font-lg);
+            color: var(--negro);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .cta-catalogo-wsp h3 i {
+            color: var(--verde-wsp);
+            font-size: var(--font-xl);
+        }
+        .cta-catalogo-wsp p {
+            margin: 0;
+            color: var(--gris-oscuro);
+            font-size: var(--font-md);
+            max-width: 600px;
+        }
+        .boton-catalogo-wsp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--verde-wsp);
+            color: var(--blanco);
+            border: 3px solid var(--negro);
+            padding: var(--space-md) var(--space-xl);
+            font-weight: 800;
+            font-size: var(--font-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--negro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-catalogo-wsp:hover {
+            background: var(--negro);
+            color: var(--verde-wsp);
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0px var(--verde-wsp);
+        }
+        .boton-catalogo-wsp:active { transform: translateY(0) scale(0.97); }
+        .boton-catalogo-wsp i { font-size: var(--font-xl); }
+        @media (max-width: 768px) {
+            .cta-catalogo-wsp {
+                padding: var(--space-md);
+                margin-top: var(--space-lg);
+            }
+            .cta-catalogo-wsp h3 { font-size: var(--font-md); }
+            .cta-catalogo-wsp p { font-size: var(--font-sm); }
+            .boton-catalogo-wsp {
+                padding: var(--space-sm) var(--space-lg);
+                font-size: var(--font-sm);
+            }
+        }
+
         /* CARRITO FLOTANTE */
         .carrito-widget {
             position: fixed;
@@ -1083,6 +1170,7 @@
                 <a href="#nosotros">Nosotros</a>
                 <a href="#venta">Venta de Equipos</a>
                 <a href="#tienda">Tienda</a>
+                <a href="https://wa.me/c/573113944320" target="_blank" class="nav-wsp-destacado"><i class="fab fa-whatsapp"></i> Catálogo WhatsApp</a>
                 <a href="#descargas">Descargas</a>
                 <a href="#galeria">Galería</a>
                 <a href="#consejos">Consejos</a>
@@ -1507,6 +1595,15 @@
             </button>
         </div>
         <span class="contador-productos" id="contadorProductos"></span>
+
+        <!-- CTA AL CATÁLOGO DE WHATSAPP -->
+        <div class="cta-catalogo-wsp">
+            <h3><i class="fab fa-whatsapp"></i> ¿Buscas más equipos?</h3>
+            <p>Explora nuestro catálogo completo actualizado en WhatsApp Business. Encuentra más modelos, componentes y periféricos disponibles.</p>
+            <a href="https://wa.me/c/573113944320" target="_blank" class="boton-catalogo-wsp">
+                <i class="fab fa-whatsapp"></i> Ver catálogo completo en WhatsApp
+            </a>
+        </div>
     </section>
 
     <section class="banner-domicilio">
@@ -1530,7 +1627,7 @@
                 <i class="fab fa-whatsapp"></i>
                 <h3>Catálogo de Equipos</h3>
                 <p>Ver nuestro catálogo actualizado en WhatsApp Business.</p>
-                <a href="https://wa.me/c/573113944320" target="_blank" class="boton-glass">Ir al Catálogo</a>
+                <a href="https://wa.me/c/573113944320?text=Hola,%20vi%20su%20cat%C3%A1logo%20en%20la%20web%20y%20me%20interesa%20un%20equipo" target="_blank" class="boton-glass">Ir al Catálogo</a>
             </div>
             
             <div id="acceso-privado" class="acceso-privado">
@@ -1885,7 +1982,7 @@
         }
 
         document.addEventListener('click', function(e) {
-            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas, .boton-compartir');
+            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas, .boton-compartir, .boton-catalogo-wsp');
             if (!elemento) return;
             vibrar();
             var rect = elemento.getBoundingClientRect();
