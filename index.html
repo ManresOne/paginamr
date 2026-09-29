@@ -1,3 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M R Sistemas y Servicios | Soporte Técnico, Redes y Seguridad en El Poblado</title>
+    <meta name="description" content="Reparación de computadores, instalación de cámaras, redes de datos y venta de equipos en El Poblado, Medellín. Servicio a domicilio y más. ¡Cotiza gratis!">
+    <meta name="keywords" content="reparación de computadores El Poblado, instalación de cámaras Envigado, venta de POS Itagüí, cableado estructurado Sabaneta, soporte técnico a domicilio, venta de computadores gamers, M R Sistemas y Servicios">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "M R Sistemas y Servicios",
+      "description": "Soporte técnico, reparación de computadores, seguridad electrónica y redes de datos.",
+      "telephone": "+57-311-394-4320",
+      "email": "mrsistemasyservicio@gmail.com",
+      "areaServed": "El Poblado, Envigado, Itagüí, Sabaneta, Caldas, El Retiro, La Ceja, Guarne, Rionegro",
+      "sameAs": ["https://www.instagram.com/mrsolutionsmed"]
+    }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --negro: #111111;
+            --blanco: #ffffff;
+            --gris-claro: #f4f4f4;
+            --gris-oscuro: #333333;
+            --acento: #007BFF; 
+            --verde-wsp: #25D366;
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 32px;
+            --space-xl: 64px;
+            --space-2xl: 80px;
+            --font-xs: 0.75rem;
+            --font-sm: 0.875rem;
+            --font-md: 1rem;
+            --font-lg: 1.5rem;
+            --font-xl: 2rem;
+            --font-2xl: 2.5rem;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --shadow-duro: 8px 8px 0px var(--negro);
+            --shadow-duro-hover: 10px 10px 0px var(--acento);
+            --shadow-acento: 6px 6px 0px var(--acento);
+        }
+
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background-color: rgba(255,255,255,0.95); 
+            color: var(--negro); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .tarjeta { 
+            background: var(--blanco); 
+            border-radius: var(--radius-md); 
+            padding: var(--space-lg); 
+            box-shadow: var(--shadow-duro); 
+            border: 2px solid var(--negro); 
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .tarjeta:hover { transform: translateY(-5px); box-shadow: var(--shadow-duro-hover); }
+
+        header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md) var(--space-xl); background: rgba(255,255,255,0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        header a.logo-link { display: flex; align-items: center; text-decoration: none; }
+        header img { max-height: 70px; }
+        
+        nav a { text-decoration: none; color: var(--negro); font-weight: bold; margin-left: var(--space-md); font-size: var(--font-sm); transition: color 0.3s; }
+        nav a:hover { color: var(--acento); text-decoration: underline; }
+        nav a.nav-wsp-destacado {
+            color: var(--verde-wsp);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        nav a.nav-wsp-destacado:hover {
+            color: var(--negro);
+            text-decoration: underline;
+        }
+
+        .menu-btn { display: none; font-size: var(--font-xl); background: none; border: none; color: var(--negro); cursor: pointer; }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animacion 0.6s linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes ripple-animacion {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        .boton-glass {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--negro);
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            font-weight: bold;
+            font-size: var(--font-sm);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-glass:hover {
+            background: rgba(37, 211, 102, 0.9);
+            color: var(--blanco);
+            border-color: var(--verde-wsp);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .boton-glass:active { transform: translateY(0) scale(0.97); }
+
+        .boton-cotizar-app {
+            padding: var(--space-sm) var(--space-lg);
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-sm);
+            font-weight: 700;
+            color: var(--negro);
+            background: transparent;
+            cursor: pointer;
+            border: 2px solid var(--negro);
+            transition: 0.5s ease;
+            user-select: none;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: var(--space-md);
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-cotizar-app:hover,
+        .boton-cotizar-app:focus {
+            color: var(--blanco);
+            background: var(--acento);
+            border: 2px solid var(--acento);
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+            box-shadow: 0 0 5px var(--acento), 0 0 20px var(--acento), 0 0 50px var(--acento), 0 0 100px var(--acento);
+            outline: none;
+        }
+        .boton-cotizar-app:active { transform: scale(0.96); }
+
+        .hero { height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; color: var(--blanco); position: relative; overflow: hidden; }
+        .video-fondo { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 0; transform: translateX(-50%) translateY(-50%); object-fit: cover; will-change: transform; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 1; }
+        .hero-contenido { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 var(--space-md); }
+        .hero p { font-size: var(--font-xl); font-weight: 600; line-height: 1.5; text-shadow: 3px 3px 8px rgba(0,0,0,0.9); margin: 0; }
+
+        .seccion { padding: var(--space-2xl) 8%; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .seccion.visible { opacity: 1; transform: translateY(0); }
+
+        .seccion-titulo { text-align: center; font-size: var(--font-2xl); margin-bottom: var(--space-xl); color: var(--negro); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: var(--space-md); }
+        .seccion-titulo img { max-height: 50px; object-fit: contain; }
+
+        .grid-servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg); align-items: stretch; }
+        
+        ul { list-style: none; padding: 0; line-height: 1.8; }
+        ul li::before { content: '▸ '; color: var(--acento); font-weight: bold; }
+
+        .tabs-contenedor { display: flex; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-lg); flex-wrap: wrap; position: relative; padding-bottom: var(--space-md); }
+        .tabs-contenedor::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 150px);
+            height: 4px;
+            width: 100px;
+            background: var(--acento);
+            border-radius: var(--radius-full);
+            transition: transform 0.5s cubic-bezier(0.33, 0.83, 0.99, 0.98);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+        .tabs-contenedor.tab-1::after { transform: translateX(0); }
+        .tabs-contenedor.tab-2::after { transform: translateX(115px); }
+        .tabs-contenedor.tab-3::after { transform: translateX(230px); }
+
+        .tab-boton {
+            background: var(--gris-claro);
+            border: 2px solid var(--negro);
+            border-radius: var(--radius-sm);
+            padding: var(--space-md) var(--space-lg);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0px var(--negro);
+            font-size: var(--font-md);
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tab-boton:active { transform: scale(0.96); box-shadow: 2px 2px 0px var(--negro); }
+        .tab-boton.activo { background: var(--negro); color: var(--blanco); box-shadow: var(--shadow-acento); }
+
+        .tab-contenido { display: none; animation: aparecerTab 0.4s ease forwards; }
+        .tab-contenido.activo { display: block; }
+
+        @keyframes aparecerTab { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .tarjeta-servicio { max-width: 800px; margin: 0 auto; }
+
+        .imagen-tarjeta { width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-sm); border: 2px solid var(--negro); margin-bottom: var(--space-md); }
+
+        .acordeon-item { border: 2px solid var(--negro); border-radius: var(--radius-sm); margin-bottom: var(--space-sm); overflow: hidden; background: var(--blanco); }
+        .acordeon-titulo { background: var(--gris-claro); padding: var(--space-md) var(--space-md); font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .acordeon-titulo:hover { background: var(--acento); color: var(--blanco); }
+        .acordeon-titulo i { transition: transform 0.3s; }
+        .acordeon-item.abierto .acordeon-titulo i { transform: rotate(180deg); }
+        .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 var(--space-md); background: var(--blanco); }
+        .acordeon-item.abierto .acordeon-contenido { max-height: 1000px; padding: var(--space-md); }
+
+        .contenedor-garantias { margin-top: auto; padding-top: var(--space-md); }
+        .detalle-garantia { background: var(--negro); color: var(--blanco); padding: var(--space-md); text-align: center; font-weight: bold; border-radius: 5px; width: 100%; display: flex; justify-content: center; align-items: center; font-size: var(--font-sm); transition: 0.3s; }
+        .detalle-garantia:hover { background: var(--acento); }
+
+        .nosotros-seccion { padding: var(--space-2xl) 8%; background: rgba(244,244,244,0.95); }
+        .nosotros-contenedor { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; }
+        .nosotros-texto h2 { font-size: var(--font-2xl); text-transform: uppercase; font-weight: 800; margin: 0 0 var(--space-md) 0; color: var(--negro); }
+        .nosotros-texto p { font-size: var(--font-md); line-height: 1.8; color: var(--gris-oscuro); margin-bottom: var(--space-md); }
+        .nosotros-valores { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-lg); }
+        .valor-item { background: var(--blanco); border: 2px solid var(--negro); border-radius: var(--radius-sm); padding: var(--space-md); box-shadow: 4px 4px 0px var(--negro); transition: all 0.3s ease; }
+        .valor-item:hover { transform: translateY(-3px); box-shadow: 6px 6px 0px var(--acento); }
+        .valor-item i { font-size: 1.8rem; color: var(--acento); margin-bottom: var(--space-sm); }
+        .valor-item h4 { margin: 0 0 var(--space-xs) 0; font-size: var(--font-md); color: var(--negro); }
+        .valor-item p { margin: 0; font-size: var(--font-sm); color: var(--gris-oscuro); }
+        .nosotros-imagen { position: relative; }
+        .nosotros-imagen img { width: 100%; border: 3px solid var(--negro); border-radius: var(--radius-md); box-shadow: var(--shadow-duro); object-fit: cover; height: 450px; }
+        .nosotros-badge { position: absolute; bottom: -20px; right: -20px; background: var(--acento); color: var(--blanco); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-md); border: 3px solid var(--negro); box-shadow: 6px 6px 0px var(--negro); text-align: center; }
+        .nosotros-badge strong { display: block; font-size: var(--font-xl); font-weight: 900; }
+        .nosotros-badge span { font-size: var(--font-sm); }
+
+        @media (max-width: 900px) {
+            .nosotros-contenedor { grid-template-columns: 1fr; }
+            .nosotros-imagen img { height: 300px; }
+            .nosotros-badge { bottom: 10px; right: 10px; }
+        }
+
+        .consejos-seccion { padding: var(--space-2xl) 8%; background: rgba(255,255,255,0.95); }
+        .consejos-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); align-items: start; }
+        .consejo-tarjeta { background: var(--blanco); border: 3px solid var(--negro); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-duro); transition: all 0.3s ease; display: flex; flex-direction: column; align-self: start; }
+        .consejo-tarjeta:hover { transform: translateY(-5px); box-shadow: var(--shadow-duro-hover); }
+        .consejo-imagen { height: 130px; background: linear-gradient(135deg, var(--acento), var(--negro)); display: flex; align-items: center; justify-content: center; color: var(--blanco); font-size: 3rem; position: relative; overflow: hidden; flex-shrink: 0; }
+        .consejo-imagen::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotar-brillo 8s linear infinite; }
+        @keyframes rotar-brillo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .consejo-cuerpo { padding: var(--space-md); display: flex; flex-direction: column; flex-grow: 1; }
+        .consejo-categoria { display: inline-block; background: var(--acento); color: var(--blanco); font-size: var(--font-xs); font-weight: bold; padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 1px; align-self: flex-start; }
+        .consejo-titulo { font-size: var(--font-md); font-weight: 800; color: var(--negro); margin: 0 0 var(--space-sm) 0; line-height: 1.3; }
+        .consejo-resumen { font-size: var(--font-sm); color: var(--gris-oscuro); line-height: 1.5; margin-bottom: var(--space-md); }
+        .consejo-contenido-completo { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, margin-bottom 0.3s ease; margin-bottom: 0; }
+        .consejo-tarjeta.abierto .consejo-contenido-completo { max-height: 600px; margin-bottom: var(--space-md); }
+        .consejo-contenido-completo p { font-size: var(--font-sm); line-height: 1.6; color: var(--gris-oscuro); margin-bottom: var(--space-sm); }
+        .consejo-contenido-completo ul { margin-bottom: var(--space-sm); padding-left: 0; }
+        .consejo-contenido-completo ul li { font-size: var(--font-sm); line-height: 1.6; color: var(--gris-oscuro); margin-bottom: var(--space-xs); position: relative; padding-left: var(--space-md); list-style: none; }
+        .consejo-contenido-completo ul li::before { content: '✓'; position: absolute; left: 0; color: #1da851; font-weight: bold; }
+        .consejo-contenido-completo strong { color: var(--negro); }
+        .consejo-botones { display: flex; gap: var(--space-sm); align-items: center; margin-top: auto; flex-wrap: wrap; }
+        .boton-leer-mas { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--negro); color: var(--blanco); text-decoration: none; font-weight: bold; font-size: var(--font-xs); padding: 8px 14px; border: 2px solid var(--negro); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.3s ease; box-shadow: 3px 3px 0px var(--gris-oscuro); overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .boton-leer-mas:hover { background: var(--acento); border-color: var(--acento); transform: translateY(-2px); box-shadow: 5px 5px 0px var(--negro); }
+        .boton-leer-mas:active { transform: scale(0.97); }
+        .boton-leer-mas i { transition: transform 0.3s; font-size: var(--font-xs); }
+        .consejo-tarjeta.abierto .boton-leer-mas i { transform: rotate(180deg); }
+        .boton-consultar { display: inline-flex; align-items: center; gap: var(--space-xs); background: var(--verde-wsp); color: var(--blanco); text-decoration: none; font-weight: bold; font-size: var(--font-xs); padding: 8px 14px; border: 2px solid var(--negro); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.3s ease; box-shadow: 3px 3px 0px var(--negro); overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .boton-consultar:hover { background: var(--negro); transform: translateY(-2px); box-shadow: 5px 5px 0px var(--verde-wsp); }
+        .boton-consultar:active { transform: scale(0.97); }
+        .boton-consultar i { font-size: var(--font-xs); }
+
+        @media (max-width: 768px) {
+            .consejos-seccion { padding: var(--space-xl) 5%; }
+            .consejos-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+            .consejo-imagen { height: 90px; font-size: 2.2rem; }
+            .consejo-cuerpo { padding: var(--space-md) var(--space-sm); }
+            .consejo-titulo { font-size: var(--font-sm); }
+            .consejo-resumen { font-size: var(--font-xs); margin-bottom: var(--space-sm); }
+            .consejo-contenido-completo p,
+            .consejo-contenido-completo ul li { font-size: var(--font-xs); }
+            .boton-leer-mas, .boton-consultar { padding: 6px 10px; font-size: 0.7rem; }
+            .consejo-botones { gap: var(--space-xs); }
+        }
+
+        .seccion-venta { background-color: rgba(17,17,17,0.9); color: var(--blanco); padding: var(--space-2xl) 8%; border-top: 4px solid var(--acento); border-bottom: 4px solid var(--acento); }
+        .titulo-venta { text-align: center; font-size: var(--font-2xl); margin: 0 0 var(--space-lg) 0; color: var(--blanco); letter-spacing: 2px; text-transform: uppercase; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: var(--space-md); }
+        .titulo-venta img { max-height: 50px; object-fit: contain; }
+        .tarjeta-venta { background: rgba(51,51,51,0.9); color: var(--blanco); border: 2px solid var(--blanco); box-shadow: 8px 8px 0px var(--acento); border-radius: var(--radius-md); padding: var(--space-lg); display: flex; flex-direction: column; height: 100%; transition: all 0.3s ease; }
+        .tarjeta-venta:hover { transform: translateY(-5px); background: rgba(17,17,17,0.9); box-shadow: 10px 10px 0px var(--blanco); }
+        .tarjeta-venta h4 { margin-top: var(--space-md); font-size: var(--font-lg); color: var(--acento); }
+        .boton-venta-wsp { background: var(--verde-wsp); color: white; border: none; padding: var(--space-md); margin-top: auto; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; text-align: center; display: block; transition: 0.3s; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .boton-venta-wsp:hover { background: white; color: var(--verde-wsp); }
+        .boton-venta-wsp:active { transform: scale(0.97); }
+        .info-extra { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease, margin-top 0.4s ease; background: rgba(255,255,255,0.1); border-radius: var(--radius-sm); margin-top: 0; padding: 0 var(--space-sm); }
+        .tarjeta-venta:hover .info-extra { max-height: 150px; padding: var(--space-sm); margin-top: var(--space-md); }
+        .info-extra p { margin: 0; font-size: var(--font-sm); font-style: italic; color: var(--blanco); text-align: center; line-height: 1.5; }
+
+        .seccion-comparativa { background: rgba(255,255,255,0.95); padding: var(--space-xl) 8% var(--space-2xl); margin-top: var(--space-xl); border-top: 4px solid var(--acento); border-radius: var(--radius-md); }
+        .seccion-comparativa h2 { text-align: center; font-size: var(--font-xl); color: var(--negro); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: var(--space-md); }
+        .seccion-comparativa > p { text-align: center; font-size: var(--font-md); color: var(--gris-oscuro); margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto; }
+        .comparativa-contenedor { max-width: 1000px; margin: 0 auto; }
+        .comparativa-encabezado { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 5px; background: var(--negro); color: var(--blanco); border-radius: var(--radius-md) var(--radius-md) 0 0; padding: var(--space-md) var(--space-sm); font-weight: bold; font-size: var(--font-sm); text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
+        .comparativa-encabezado > div:first-child { text-align: left; padding-left: var(--space-md); }
+        .comparativa-fila { border: 2px solid var(--negro); border-top: none; background: var(--blanco); transition: all 0.3s ease; }
+        .comparativa-fila:last-child { border-radius: 0 0 var(--radius-md) var(--radius-md); }
+        .comparativa-fila:hover { background: #fafafa; }
+        .comparativa-fila.activa { background: rgba(0, 123, 255, 0.05); box-shadow: inset 4px 0 0 var(--acento); }
+        .fila-principal { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 5px; padding: var(--space-md) var(--space-sm); cursor: pointer; align-items: center; font-size: var(--font-md); -webkit-tap-highlight-color: transparent; }
+        .fila-principal .nombre { text-align: left; padding-left: var(--space-md); font-weight: 600; color: var(--negro); display: flex; align-items: center; gap: var(--space-sm); }
+        .fila-principal .nombre i { color: var(--acento); font-size: var(--font-md); transition: transform 0.3s ease; }
+        .comparativa-fila.activa .nombre i { transform: rotate(90deg); }
+        .fila-principal .icono-check { text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .check-si { color: #1da851; display: inline-block; animation: pulse-verde 2s ease-in-out infinite; }
+        .check-no { color: #d93636; display: inline-block; opacity: 0.5; animation: pulse-rojo 2.5s ease-in-out infinite; }
+        @keyframes pulse-verde { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        @keyframes pulse-rojo { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.35; } }
+        .fila-explicacion { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: var(--negro); color: var(--blanco); border-radius: 0 0 var(--radius-sm) var(--radius-sm); margin: 0 var(--space-sm); }
+        .comparativa-fila.activa .fila-explicacion { max-height: 150px; padding: var(--space-md) var(--space-md); margin-bottom: var(--space-sm); }
+        .fila-explicacion p { margin: 0; font-size: var(--font-sm); line-height: 1.6; }
+        .fila-explicacion strong { color: var(--acento); }
+
+        .bloque-pos { max-width: 1000px; margin: var(--space-xl) auto 0; background: var(--negro); color: var(--blanco); border: 4px solid var(--negro); border-radius: var(--radius-lg); box-shadow: 10px 10px 0px var(--acento); overflow: hidden; position: relative; }
+        .bloque-pos::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 5px; background: linear-gradient(90deg, transparent, var(--acento), transparent); animation: barrido 3s linear infinite; }
+        @keyframes barrido { 0% { left: -100%; } 100% { left: 100%; } }
+        .pos-encabezado { background: var(--acento); padding: var(--space-lg) var(--space-xl); display: flex; align-items: center; gap: var(--space-lg); }
+        .pos-encabezado .icono-grande { font-size: 3.5rem; line-height: 1; }
+        .pos-encabezado h3 { margin: 0; font-size: var(--font-xl); text-transform: uppercase; font-weight: 900; letter-spacing: 1px; text-shadow: 3px 3px 0px var(--negro); }
+        .pos-encabezado p { margin: 5px 0 0 0; font-size: var(--font-md); font-weight: 500; opacity: 0.95; }
+        .pos-cuerpo { padding: var(--space-lg); }
+        .pos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md); }
+        .pos-item { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); padding: var(--space-md); display: flex; align-items: flex-start; gap: var(--space-md); transition: all 0.3s ease; }
+        .pos-item:hover { background: rgba(0, 123, 255, 0.15); border-color: var(--acento); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2); }
+        .pos-item .check-pos { font-size: 1.8rem; color: #1da851; flex-shrink: 0; line-height: 1; animation: pulse-verde 2s ease-in-out infinite; }
+        .pos-item .texto-pos strong { display: block; color: var(--blanco); font-size: var(--font-md); margin-bottom: 5px; font-weight: 700; }
+        .pos-item .texto-pos span { color: rgba(255,255,255,0.7); font-size: var(--font-sm); line-height: 1.4; }
+        .pos-cta { margin-top: var(--space-lg); text-align: center; }
+        .pos-cta a { display: inline-block; background: var(--verde-wsp); color: white; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-full); text-decoration: none; font-weight: bold; font-size: 1.1rem; border: 2px solid var(--blanco); box-shadow: 6px 6px 0px var(--blanco); transition: all 0.3s ease; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .pos-cta a:hover { transform: translateY(-3px); box-shadow: 8px 8px 0px var(--blanco); filter: brightness(1.1); }
+        .pos-cta a:active { transform: translateY(0) scale(0.97); }
+
+        @media (max-width: 768px) {
+            .comparativa-encabezado, .fila-principal { grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr; font-size: 0.7rem; padding: 10px 4px; gap: 2px; }
+            .comparativa-encabezado > div { text-align: center; padding: 0 2px; font-size: 0.65rem; letter-spacing: 0; }
+            .comparativa-encabezado > div:first-child { padding-left: 6px; text-align: left; }
+            .fila-principal .nombre { padding-left: 6px; font-size: 0.75rem; gap: 4px; }
+            .fila-principal .nombre i { display: none; }
+            .fila-principal .icono-check { font-size: 1rem; }
+            .fila-explicacion p { font-size: 0.8rem; }
+            .bloque-pos { margin: 30px auto 0; max-width: 95%; }
+            .pos-encabezado { flex-direction: column; text-align: center; padding: var(--space-md); gap: var(--space-sm); }
+            .pos-encabezado .icono-grande { font-size: 2.5rem; }
+            .pos-encabezado h3 { font-size: 1.3rem; }
+            .pos-encabezado p { font-size: 0.8rem; }
+            .pos-cuerpo { padding: var(--space-md); }
+            .pos-grid { grid-template-columns: 1fr; gap: var(--space-sm); }
+            .pos-item { padding: var(--space-sm) var(--space-md); padding-right: 40px; flex-direction: column; gap: var(--space-xs); cursor: pointer; position: relative; }
+            .pos-item::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--acento); transition: transform 0.3s; font-size: 0.9rem; }
+            .pos-item.abierto::after { transform: translateY(-50%) rotate(180deg); }
+            .pos-item .texto-pos span { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease; opacity: 0; display: block; }
+            .pos-item .texto-pos strong { font-size: 0.9rem; margin-bottom: 0; }
+            .pos-item.abierto .texto-pos span { max-height: 200px; margin-top: 8px; opacity: 1; }
+            .pos-item .check-pos { font-size: 1.3rem; position: absolute; top: 12px; left: 12px; }
+            .pos-item .texto-pos { padding-left: 25px; }
+            .pos-cta a { padding: 10px 20px; font-size: 0.95rem; }
+        }
+
+        .seccion-descargas { padding: var(--space-2xl) 8%; background: rgba(255,255,255,0.9); }
+        .grid-descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+        .tarjeta-descarga { background: var(--negro); color: var(--blanco); padding: var(--space-lg); border-radius: 10px; border: 3px solid var(--acento); box-shadow: var(--shadow-acento); text-align: center; transition: transform 0.3s; }
+        .tarjeta-descarga:hover { transform: translateY(-5px); background: var(--acento); }
+        .tarjeta-descarga i { font-size: 3rem; margin-bottom: var(--space-md); }
+        .tarjeta-descarga h3 { margin: 0 0 var(--space-sm) 0; font-size: var(--font-lg); }
+        .tarjeta-descarga p { font-size: var(--font-sm); margin-bottom: var(--space-md); }
+        .boton-descargar { background: var(--blanco); color: var(--negro); padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; border: 2px solid var(--negro); transition: 0.3s; overflow: hidden; }
+        .tarjeta-descarga:hover .boton-descargar { background: var(--negro); color: var(--blanco); }
+
+        .acceso-privado { display: none; background: var(--blanco); border: 3px solid var(--negro); border-radius: var(--radius-md); box-shadow: var(--shadow-duro); padding: var(--space-lg); max-width: 500px; margin: var(--space-lg) auto 0; text-align: center; }
+        .seccion-descargas:target .acceso-privado { display: block; }
+        .acceso-privado input { width: 100%; padding: var(--space-md); margin-bottom: var(--space-md); border: 2px solid var(--negro); font-family: inherit; background: var(--blanco); text-align: center; border-radius: var(--radius-sm); }
+        .acceso-privado button { background: var(--negro); color: white; border: none; padding: var(--space-md) var(--space-xl); border-radius: var(--radius-sm); font-weight: bold; cursor: pointer; transition: 0.3s; overflow: hidden; }
+        .acceso-privado button:hover { background: var(--acento); }
+        .acceso-privado .mensaje-error { color: red; font-weight: bold; margin-top: var(--space-sm); display: none; }
+        .area-interna-oculta { display: none; margin-top: var(--space-lg); }
+        .area-interna-oculta.visible { display: block; }
+
+        .carrusel-trabajos { width: 100%; overflow: hidden; position: relative; padding: var(--space-sm) 0; }
+        .carrusel-items { display: flex; gap: var(--space-md); width: max-content; animation: desplazamiento 45s linear infinite; will-change: transform; }
+        .carrusel-trabajos:hover .carrusel-items { animation-play-state: paused; }
+        .item-carrusel { flex: 0 0 auto; width: 350px; height: 220px; border: 3px solid var(--negro); border-radius: var(--radius-md); overflow: hidden; cursor: pointer; position: relative; transition: all 0.4s ease; }
+        .item-carrusel img, .item-carrusel video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .item-carrusel:hover { border-color: var(--acento); transform: scale(1.05); z-index: 10; }
+        .item-carrusel:hover img, .item-carrusel:hover video { transform: scale(1.1); }
+        .item-carrusel .icono-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: var(--font-lg); pointer-events: none; }
+        @keyframes desplazamiento { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 10000; justify-content: center; align-items: center; flex-direction: column; padding: var(--space-md); box-sizing: border-box; }
+        .lightbox.activo { display: flex; }
+        .lightbox img, .lightbox video { max-width: 100%; max-height: 85vh; object-fit: contain; border: 3px solid var(--blanco); border-radius: var(--radius-sm); display: block; margin: 0 auto; }
+        .lightbox-cerrar { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: var(--blanco); cursor: pointer; }
+        .lightbox-anterior, .lightbox-siguiente { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: var(--blanco); cursor: pointer; user-select: none; padding: var(--space-md); }
+        .lightbox-anterior { left: 20px; }
+        .lightbox-siguiente { right: 20px; }
+        .lightbox-contador { color: var(--blanco); margin-top: var(--space-md); font-size: 1.2rem; font-weight: bold; }
+
+        .seccion-marcas { background: rgba(244,244,244,0.9); padding: var(--space-xl) 0; text-align: center; overflow: hidden; }
+        .seccion-marcas p { font-size: 1.1rem; color: var(--gris-oscuro); margin-bottom: var(--space-lg); }
+        .logos { width: 100%; overflow: hidden; }
+        .logo_items { display: flex; gap: var(--space-md); width: max-content; animation: desplazamiento 30s linear infinite; will-change: transform; }
+        .seccion-marcas:hover .logo_items { animation-play-state: paused; }
+        .logo_items img { width: 120px; height: 60px; object-fit: contain; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
+        .logo_items img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
+
+        /* ============================================
+           SECCIÓN DESARROLLO DE SOFTWARE
+           ============================================ */
+        .seccion-desarrollo {
+            background: var(--negro);
+            color: var(--blanco);
+            padding: var(--space-2xl) 8%;
+            border-top: 4px solid var(--acento);
+            border-bottom: 4px solid var(--acento);
+        }
+        .seccion-desarrollo .seccion-titulo {
+            color: var(--blanco);
+        }
+        .seccion-desarrollo .seccion-titulo i {
+            color: var(--acento);
+        }
+        .desarrollo-subtitulo {
+            text-align: center;
+            font-size: var(--font-lg);
+            font-weight: 700;
+            color: var(--acento);
+            margin: -20px auto var(--space-md);
+            max-width: 800px;
+        }
+        .desarrollo-descripcion {
+            text-align: center;
+            font-size: var(--font-md);
+            color: rgba(255,255,255,0.75);
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.7;
+        }
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .proyecto-card {
+            background: rgba(51,51,51,0.9);
+            border: 3px solid var(--blanco);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            box-shadow: 8px 8px 0px var(--acento);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .proyecto-card:hover {
+            transform: translateY(-5px);
+            background: rgba(17,17,17,0.95);
+            box-shadow: 10px 10px 0px var(--blanco);
+        }
+        .proyecto-preview {
+            height: 140px;
+            background: linear-gradient(135deg, rgba(0,123,255,0.15), rgba(0,123,255,0.05));
+            border: 2px dashed rgba(0,123,255,0.4);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .proyecto-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .proyecto-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            flex-grow: 1;
+        }
+        .proyecto-nombre {
+            font-size: var(--font-lg);
+            font-weight: 800;
+            color: var(--blanco);
+            margin: 0;
+            line-height: 1.3;
+        }
+        .proyecto-descripcion {
+            font-size: var(--font-sm);
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .proyecto-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: var(--space-xs);
+        }
+        .proyecto-tech span {
+            font-size: var(--font-xs);
+            background: rgba(0,123,255,0.2);
+            color: var(--acento);
+            padding: 3px 8px;
+            border-radius: var(--radius-full);
+            font-weight: bold;
+            border: 1px solid rgba(0,123,255,0.3);
+        }
+        .proyecto-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--acento);
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: var(--font-sm);
+            padding: 10px var(--space-md);
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--acento);
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .proyecto-link:hover {
+            background: transparent;
+            color: var(--acento);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0,123,255,0.5);
+        }
+        .proyecto-link:active { transform: scale(0.97); }
+        .proyecto-link i { font-size: var(--font-md); }
+
+        .contenedor-ver-proyectos {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+
+        .boton-ver-proyectos {
+            padding: var(--space-sm) var(--space-lg);
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-sm);
+            font-weight: 700;
+            color: var(--blanco);
+            background: transparent;
+            cursor: pointer;
+            border: 2px solid var(--blanco);
+            transition: 0.5s ease;
+            user-select: none;
+            text-decoration: none;
+            display: inline-block;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-ver-proyectos:hover,
+        .boton-ver-proyectos:focus {
+            color: var(--blanco);
+            background: var(--acento);
+            border: 2px solid var(--acento);
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+            box-shadow: 0 0 5px var(--acento), 0 0 20px var(--acento), 0 0 50px var(--acento), 0 0 100px var(--acento);
+            outline: none;
+        }
+        .boton-ver-proyectos:active { transform: scale(0.96); }
+        .boton-ver-proyectos i { margin-left: 8px; }
+
+        @media (max-width: 768px) {
+            .proyecto-preview { height: 110px; font-size: 3rem; }
+            .proyecto-nombre { font-size: var(--font-md); }
+            .proyecto-descripcion { font-size: var(--font-xs); }
+            .boton-ver-proyectos { font-size: var(--font-xs); padding: var(--space-sm) var(--space-md); }
+        }
+
+        .banner-domicilio { background: var(--acento); color: white; padding: var(--space-lg) 8%; text-align: center; }
+        .banner-domicilio img { max-height: 80px; margin-bottom: var(--space-sm); }
+        .banner-domicilio h2 { margin: 0 0 var(--space-sm) 0; font-size: var(--font-xl); text-transform: uppercase; letter-spacing: 1px; }
+        .banner-domicilio p { margin: 0; font-size: 1.2rem; font-weight: 500; }
+        .banner-domicilio .boton-glass { width: auto; margin-top: var(--space-md); }
+
+        .faq-seccion { background: rgba(255,255,255,0.9); padding: var(--space-2xl) 8%; }
+        .faq-item { border: 2px solid var(--negro); border-radius: 10px; margin-bottom: var(--space-md); overflow: hidden; }
+        .faq-pregunta { background: var(--negro); color: white; padding: var(--space-md) var(--space-lg); font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .faq-pregunta:hover { background: var(--acento); }
+        .faq-pregunta i { transition: transform 0.3s; }
+        .faq-respuesta { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--gris-claro); }
+        .faq-respuesta p { padding: var(--space-md) var(--space-lg); margin: 0; }
+        .faq-item.abierto .faq-respuesta { max-height: 200px; }
+        .faq-item.abierto .faq-pregunta i { transform: rotate(180deg); }
+
+        .contacto-seccion { background-color: rgba(244,244,244,0.9); padding: var(--space-2xl) 8%; display: flex; flex-wrap: wrap; gap: var(--space-lg); border-top: 3px solid var(--negro); }
+        .formulario, .mapa-container { flex: 1; min-width: 300px; }
+        input, textarea { width: calc(100% - 24px); padding: var(--space-md); margin: 0 auto var(--space-md) auto; display: block; border: 2px solid var(--negro); font-family: inherit; background: var(--blanco); border-radius: 10px; box-sizing: border-box; }
+        .boton-whatsapp { display: flex; align-items: center; justify-content: center; background-color: var(--verde-wsp); color: white; border: none; padding: var(--space-md); font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: var(--radius-full); width: 100%; margin-top: 5px; transition: transform 0.2s, background-color 0.2s; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .boton-whatsapp:hover { transform: translateY(-2px); background-color: #20b358; }
+        .boton-whatsapp:active { transform: scale(0.97); }
+        .boton-whatsapp i { margin-right: var(--space-sm); font-size: var(--font-lg); }
+
+        iframe { width: 100%; height: 400px; border: 3px solid var(--negro); }
+        .info-cobertura { background: var(--negro); color: white; padding: var(--space-md); margin-top: var(--space-md); border-radius: 5px; text-align: center; font-weight: bold; }
+
+        .mapa-container { position: relative; overflow: hidden; opacity: 0; transform: scale(0.95); animation: entrar-mapa 0.8s ease forwards; }
+        @keyframes entrar-mapa { to { opacity: 1; transform: scale(1); } }
+        .mapa-container iframe { transition: all 0.5s ease; position: relative; z-index: 1; }
+        .mapa-container:hover iframe { transform: scale(1.02); box-shadow: 0 0 30px rgba(0, 123, 255, 0.3); }
+        .mapa-container::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, var(--acento), transparent); animation: barrido-mapa 3s linear infinite; z-index: 10; pointer-events: none; }
+        @keyframes barrido-mapa { 0% { left: -100%; } 100% { left: 100%; } }
+        .mapa-marcador { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; pointer-events: none; }
+        .mapa-marcador::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--verde-wsp); border: 3px solid var(--blanco); border-radius: 50%; box-shadow: 0 0 15px rgba(37, 211, 102, 0.8); animation: pulso-mapa 2s ease-in-out infinite; }
+        .mapa-marcador::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: rgba(37, 211, 102, 0.6); border-radius: 50%; animation: onda-mapa 2s ease-out infinite; }
+        @keyframes pulso-mapa { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.3); } }
+        @keyframes onda-mapa { 0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(4); opacity: 0; } }
+        .mapa-etiqueta { position: absolute; top: 15px; left: 15px; z-index: 6; background: var(--negro); color: var(--blanco); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); font-size: var(--font-sm); font-weight: bold; border: 2px solid var(--blanco); box-shadow: 0 4px 15px rgba(0,0,0,0.3); animation: flotar-etiqueta 3s ease-in-out infinite; }
+        @keyframes flotar-etiqueta { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        .wa-widget { position: fixed; bottom: 25px; right: 25px; z-index: 9999; }
+        .wa-burbuja { width: 65px; height: 65px; background: var(--verde-wsp); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2.2rem; color: white; cursor: pointer; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); transition: all 0.3s ease; position: relative; animation: pulso-wa 2s infinite; overflow: visible; -webkit-tap-highlight-color: transparent; }
+        .wa-burbuja:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7); }
+        .wa-burbuja:active { transform: scale(0.95); }
+        @keyframes pulso-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .wa-notificacion { position: absolute; top: -6px; right: -6px; background: #ff3b30; color: white; font-size: 0.8rem; font-weight: bold; border-radius: 50%; width: 24px; height: 24px; display: flex; justify-content: center; align-items: center; border: 3px solid white; animation: bounce-notif 1.5s infinite; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        @keyframes bounce-notif { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        .wa-panel { position: absolute; bottom: 85px; right: 0; width: 320px; background: white; border-radius: var(--radius-lg); box-shadow: 0 10px 40px rgba(0,0,0,0.2); overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.9); pointer-events: none; transition: all 0.3s ease; }
+        .wa-panel.abierto { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        .wa-panel-header { background: var(--verde-wsp); color: white; padding: var(--space-md) var(--space-lg); display: flex; align-items: center; justify-content: space-between; }
+        .wa-panel-header-info { display: flex; align-items: center; gap: var(--space-md); }
+        .wa-panel-avatar { width: 45px; height: 45px; border-radius: 50%; background: white; display: flex; justify-content: center; align-items: center; color: var(--verde-wsp); font-size: var(--font-lg); flex-shrink: 0; }
+        .wa-panel-header-info h4 { margin: 0; font-size: var(--font-md); font-weight: bold; }
+        .wa-panel-header-info p { margin: 2px 0 0 0; font-size: var(--font-xs); opacity: 0.9; display: flex; align-items: center; gap: 5px; }
+        .wa-panel-header-info p::before { content: ''; width: 8px; height: 8px; background: #4ade80; border-radius: 50%; display: inline-block; }
+        .wa-panel-cerrar { background: none; border: none; color: white; font-size: var(--font-lg); cursor: pointer; padding: 0; line-height: 1; opacity: 0.8; transition: opacity 0.3s; }
+        .wa-panel-cerrar:hover { opacity: 1; }
+        .wa-panel-cuerpo { padding: var(--space-lg); background: #e5ddd5; background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 2px, transparent 2px), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 2px, transparent 2px); background-size: 30px 30px; }
+        .wa-mensaje { background: white; padding: var(--space-md); border-radius: 10px 10px 10px 0; font-size: var(--font-sm); color: #333; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,0.1); max-width: 85%; position: relative; }
+        .wa-mensaje strong { color: var(--verde-wsp); }
+        .wa-mensaje::before { content: ''; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 8px solid white; border-left: 8px solid transparent; }
+        .wa-boton-iniciar { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); background: var(--verde-wsp); color: white; padding: var(--space-md); border-radius: 10px; text-decoration: none; font-weight: bold; font-size: var(--font-sm); margin-top: var(--space-md); transition: all 0.3s ease; border: 2px solid transparent; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+        .wa-boton-iniciar:hover { background: white; color: var(--verde-wsp); border: 2px solid var(--verde-wsp); transform: translateY(-2px); }
+        .wa-boton-iniciar:active { transform: scale(0.97); }
+        .wa-panel-footer { background: white; padding: var(--space-sm); text-align: center; font-size: var(--font-xs); color: #888; border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) {
+            .wa-widget { bottom: 20px; right: 20px; }
+            .wa-panel { width: calc(100vw - 40px); max-width: 320px; right: 0; }
+            .wa-burbuja { width: 58px; height: 58px; font-size: 1.9rem; }
+            .wa-notificacion { top: -4px; right: -4px; width: 20px; height: 20px; font-size: 0.7rem; border-width: 2px; }
+        }
+
+        /* TIENDA DE PRODUCTOS */
+        .tienda-seccion { padding: var(--space-2xl) 8%; background: rgba(244,244,244,0.95); }
+        .tienda-filtros {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        .filtro-btn {
+            background: var(--blanco);
+            border: 2px solid var(--negro);
+            border-radius: var(--radius-sm);
+            padding: 10px 18px;
+            font-weight: bold;
+            font-size: var(--font-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 0px var(--negro);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .filtro-btn:hover {
+            background: var(--gris-claro);
+            transform: translateY(-2px);
+        }
+        .filtro-btn:active { transform: scale(0.96); }
+        .filtro-btn.activo {
+            background: var(--negro);
+            color: var(--blanco);
+            box-shadow: 4px 4px 0px var(--acento);
+        }
+        .tienda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .producto-tarjeta {
+            background: var(--blanco);
+            border: 3px solid var(--negro);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-duro);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            scroll-margin-top: 100px;
+        }
+        .producto-tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-duro-hover);
+        }
+        /* RESALTADO DEL PRODUCTO COMPARTIDO */
+        .producto-tarjeta.destacado {
+            animation: pulso-destacado 1.2s ease-in-out infinite;
+            border-color: var(--acento);
+            border-width: 5px;
+            box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.35), 10px 10px 0px var(--acento);
+            z-index: 5;
+        }
+        @keyframes pulso-destacado {
+            0%, 100% {
+                box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.35), 10px 10px 0px var(--acento);
+            }
+            50% {
+                box-shadow: 0 0 0 16px rgba(0, 123, 255, 0.55), 10px 10px 0px var(--acento);
+            }
+        }
+        /* BANNER DE PRODUCTO COMPARTIDO */
+        .banner-compartido {
+            background: linear-gradient(135deg, var(--acento), #0056b3);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            font-weight: bold;
+            font-size: var(--font-md);
+            border: 3px solid var(--negro);
+            box-shadow: 6px 6px 0px var(--negro);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            animation: aparecer-banner 0.5s ease forwards;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .banner-compartido.visible {
+            display: flex;
+        }
+        .banner-compartido i {
+            font-size: 1.5rem;
+            animation: bounce-notif 1.5s infinite;
+        }
+        @keyframes aparecer-banner {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .banner-compartido {
+                font-size: var(--font-sm);
+                padding: var(--space-sm) var(--space-md);
+                margin-bottom: var(--space-md);
+            }
+            .banner-compartido i { font-size: 1.2rem; }
+        }
+        .producto-cabecera {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .producto-imagen {
+            height: 200px;
+            background: var(--blanco);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            border-bottom: 2px solid var(--negro);
+            position: relative;
+            overflow: hidden;
+            padding: var(--space-sm);
+        }
+        .producto-imagen img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .producto-estado {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: var(--font-xs);
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            color: var(--blanco);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+        .estado-nuevo { background: #1da851; }
+        .estado-usado { background: #d97706; }
+        .estado-consultar { background: var(--acento); }
+        .producto-info-rapida {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            position: relative;
+        }
+        .producto-categoria {
+            display: inline-block;
+            background: var(--acento);
+            color: var(--blanco);
+            font-size: var(--font-xs);
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-self: flex-start;
+        }
+        .producto-titulo {
+            font-size: var(--font-md);
+            font-weight: 800;
+            color: var(--negro);
+            margin: 0;
+            line-height: 1.3;
+            padding-right: 30px;
+        }
+        .producto-flecha {
+            position: absolute;
+            right: var(--space-md);
+            bottom: var(--space-md);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--negro);
+            color: var(--blanco);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .producto-tarjeta.abierto .producto-flecha {
+            transform: rotate(180deg);
+            background: var(--acento);
+        }
+        .producto-detalle {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 var(--space-md);
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+        .producto-tarjeta.abierto .producto-detalle {
+            max-height: 500px;
+            padding: var(--space-md);
+            border-top: 2px dashed var(--gris-claro);
+        }
+        .producto-specs {
+            font-size: var(--font-sm);
+            color: var(--gris-oscuro);
+            line-height: 1.5;
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .producto-precio {
+            font-size: var(--font-md);
+            color: var(--negro);
+            font-weight: bold;
+            margin: 0 0 var(--space-md) 0;
+        }
+        .producto-precio .precio-valor {
+            color: var(--acento);
+        }
+        .producto-acciones {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: stretch;
+        }
+        .boton-agregar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--negro);
+            color: var(--blanco);
+            border: 2px solid var(--negro);
+            padding: 10px;
+            font-weight: bold;
+            font-size: var(--font-sm);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-agregar:hover {
+            background: var(--acento);
+            border-color: var(--acento);
+            transform: translateY(-2px);
+        }
+        .boton-agregar:active { transform: scale(0.97); }
+        .boton-agregar.agregado {
+            background: #1da851;
+            border-color: #1da851;
+        }
+        .boton-compartir {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--negro);
+            color: var(--blanco);
+            border: 2px solid var(--negro);
+            width: 44px;
+            min-width: 44px;
+            font-size: 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+        .boton-compartir:hover {
+            background: var(--acento);
+            color: var(--blanco);
+            transform: translateY(-2px);
+        }
+        .boton-compartir:active { transform: scale(0.95); }
+
+        /* TOAST DE NOTIFICACIÓN */
+        .toast-notificacion {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--negro);
+            color: var(--blanco);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-full);
+            border: 2px solid var(--verde-wsp);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 20px rgba(37, 211, 102, 0.4);
+            font-weight: bold;
+            font-size: var(--font-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10001;
+            white-space: nowrap;
+            max-width: 90vw;
+        }
+        .toast-notificacion.activo {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast-notificacion i {
+            color: var(--verde-wsp);
+            font-size: var(--font-lg);
+        }
+        @media (max-width: 768px) {
+            .toast-notificacion {
+                bottom: 90px;
+                padding: var(--space-sm) var(--space-md);
+                font-size: var(--font-xs);
+            }
+        }
+
+        /* BOTÓN "VER MÁS PRODUCTOS" */
+        .contenedor-ver-mas {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+        .boton-ver-mas {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--blanco);
+            color: var(--negro);
+            border: 3px solid var(--negro);
+            padding: var(--space-md) var(--space-xl);
+            font-weight: 800;
+            font-size: var(--font-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--negro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-ver-mas:hover {
+            background: var(--acento);
+            color: var(--blanco);
+            border-color: var(--acento);
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0px var(--negro);
+        }
+        .boton-ver-mas:active { transform: translateY(0) scale(0.97); box-shadow: 4px 4px 0px var(--negro); }
+        .boton-ver-mas.agotado {
+            background: var(--gris-claro);
+            color: var(--gris-oscuro);
+            border-color: var(--gris-oscuro);
+            box-shadow: 4px 4px 0px var(--gris-oscuro);
+            cursor: default;
+            pointer-events: none;
+            font-size: var(--font-sm);
+            opacity: 0.8;
+        }
+        .contador-productos {
+            display: block;
+            text-align: center;
+            margin-top: var(--space-md);
+            font-size: var(--font-sm);
+            color: var(--gris-oscuro);
+            font-style: italic;
+        }
+
+        /* BANNER CTA AL CATÁLOGO DE WHATSAPP */
+        .cta-catalogo-wsp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--blanco);
+            border: 3px solid var(--negro);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-duro);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .cta-catalogo-wsp h3 {
+            margin: 0;
+            font-size: var(--font-lg);
+            color: var(--negro);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .cta-catalogo-wsp h3 i {
+            color: var(--verde-wsp);
+            font-size: var(--font-xl);
+        }
+        .cta-catalogo-wsp p {
+            margin: 0;
+            color: var(--gris-oscuro);
+            font-size: var(--font-md);
+            max-width: 600px;
+        }
+        .boton-catalogo-wsp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--verde-wsp);
+            color: var(--blanco);
+            border: 3px solid var(--negro);
+            padding: var(--space-md) var(--space-xl);
+            font-weight: 800;
+            font-size: var(--font-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--negro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .boton-catalogo-wsp:hover {
+            background: var(--negro);
+            color: var(--verde-wsp);
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0px var(--verde-wsp);
+        }
+        .boton-catalogo-wsp:active { transform: translateY(0) scale(0.97); }
+        .boton-catalogo-wsp i { font-size: var(--font-xl); }
+        @media (max-width: 768px) {
+            .cta-catalogo-wsp {
+                padding: var(--space-md);
+                margin-top: var(--space-lg);
+            }
+            .cta-catalogo-wsp h3 { font-size: var(--font-md); }
+            .cta-catalogo-wsp p { font-size: var(--font-sm); }
+            .boton-catalogo-wsp {
+                padding: var(--space-sm) var(--space-lg);
+                font-size: var(--font-sm);
+            }
+        }
+
+        /* CARRITO FLOTANTE */
+        .carrito-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 100px;
+            z-index: 9998;
+        }
+        .carrito-burbuja {
+            width: 60px;
+            height: 60px;
+            background: var(--negro);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: var(--blanco);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 3px solid var(--acento);
+        }
+        .carrito-burbuja:hover {
+            transform: scale(1.1);
+            background: var(--acento);
+        }
+        .carrito-contador {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ff3b30;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid white;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .carrito-panel {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 340px;
+            max-width: calc(100vw - 40px);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .carrito-panel.abierto {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .carrito-header {
+            background: var(--negro);
+            color: white;
+            padding: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--acento);
+        }
+        .carrito-header h4 {
+            margin: 0;
+            font-size: var(--font-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .carrito-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .carrito-header button:hover { opacity: 1; }
+        .carrito-items {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: var(--space-sm);
+        }
+        .carrito-vacio {
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+            color: var(--gris-oscuro);
+            font-size: var(--font-sm);
+            font-style: italic;
+        }
+        .carrito-vacio i {
+            font-size: 2.5rem;
+            color: var(--gris-claro);
+            display: block;
+            margin-bottom: var(--space-md);
+        }
+        .carrito-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border-bottom: 1px solid var(--gris-claro);
+            font-size: var(--font-sm);
+        }
+        .carrito-item:last-child { border-bottom: none; }
+        .carrito-item-icono {
+            width: 40px;
+            height: 40px;
+            background: var(--gris-claro);
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .carrito-item-icono img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carrito-item-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        .carrito-item-info strong {
+            display: block;
+            font-size: var(--font-xs);
+            color: var(--negro);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .carrito-item-info span {
+            font-size: 0.7rem;
+            color: var(--gris-oscuro);
+        }
+        .carrito-item-eliminar {
+            background: none;
+            border: none;
+            color: #d93636;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 5px;
+            transition: transform 0.2s;
+        }
+        .carrito-item-eliminar:hover { transform: scale(1.2); }
+        .carrito-footer {
+            padding: var(--space-md);
+            background: var(--gris-claro);
+            border-top: 2px solid var(--negro);
+        }
+        .carrito-footer .boton-whatsapp {
+            margin-top: 0;
+        }
+        .carrito-nota {
+            font-size: 0.75rem;
+            color: var(--gris-oscuro);
+            text-align: center;
+            margin-top: var(--space-sm);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .tienda-seccion { padding: var(--space-xl) 5%; }
+            .tienda-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
+            .producto-imagen { height: 160px; font-size: 3rem; }
+            .producto-titulo { font-size: var(--font-sm); }
+            .producto-specs { font-size: var(--font-xs); }
+            .filtro-btn { padding: 8px 12px; font-size: var(--font-xs); }
+            .carrito-widget { right: 90px; bottom: 20px; }
+            .carrito-burbuja { width: 55px; height: 55px; font-size: 1.4rem; }
+            .carrito-panel { width: 320px; right: -10px; }
+            .boton-ver-mas { padding: var(--space-md) var(--space-lg); font-size: var(--font-sm); }
+            .boton-agregar { font-size: var(--font-xs); }
+            .boton-compartir { width: 40px; min-width: 40px; font-size: 0.9rem; }
+        }
+
+        footer { background: var(--negro); color: white; text-align: center; padding: var(--space-lg); margin-top: var(--space-lg); }
+
+        @media (max-width: 768px) {
+            header { padding: var(--space-md); }
+            header img { max-height: 55px; }
+            .menu-btn { display: block; }
+            nav { display: none; width: 100%; flex-direction: column; position: absolute; top: 80px; left: 0; background: var(--blanco); border-bottom: 3px solid var(--negro); padding: var(--space-md); }
+            nav.active { display: flex; }
+            nav a { margin: 10px 0; }
+            .boton-cotizar-app { margin-left: 0; margin-top: 10px; display: block; width: 100%; text-align: center; }
+            .hero p { font-size: var(--font-lg); }
+            .seccion-titulo { font-size: var(--font-xl); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#inicio" class="logo-link">
+            <img src="img/logo.png" alt="Logo M R Sistemas y Servicios">
+        </a>
+        <div style="display: flex; align-items: center;">
+            <nav id="menuNav">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#venta">Venta de Equipos</a>
+                <a href="#desarrollo">Desarrollo</a>
+                <a href="#tienda">Tienda</a>
+                <a href="https://wa.me/c/573113944320" target="_blank" class="nav-wsp-destacado"><i class="fab fa-whatsapp"></i> Catálogo WhatsApp</a>
+                <a href="#descargas">Descargas</a>
+                <a href="#galeria">Galería</a>
+                <a href="#consejos">Consejos</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <a href="https://manresone.github.io/cotizadorApp/" target="_blank" class="boton-cotizar-app">Cotizar App</a>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <video autoplay muted loop playsinline class="video-fondo">
+            <source src="img/video-fondo.mp4" type="video/mp4">
+        </video>
+        <div class="hero-contenido">
+            <p>Computadores, seguridad electrónica y redes de datos.<br>Soporte especializado para tu casa o tu oficina.</p>
+        </div>
+    </section>
+
+    <section id="servicios" class="seccion">
+        <h2 class="seccion-titulo"><img src="img/servicios.png" alt="Icono Servicios"> NUESTROS SERVICIOS</h2>
+        
+        <div class="tabs-contenedor" id="tabsContenedor">
+            <button class="tab-boton activo" onclick="abrirTab(event, 'tab-computadores')">💻 Computadores</button>
+            <button class="tab-boton" onclick="abrirTab(event, 'tab-seguridad')">🔒 Seguridad</button>
+            <button class="tab-boton" onclick="abrirTab(event, 'tab-redes')">🌐 Redes</button>
+        </div>
+
+        <div id="tab-computadores" class="tab-contenido activo">
+            <div class="tarjeta tarjeta-servicio">
+                <img src="img/servicio-computadores.jpg" alt="Computadores" class="imagen-tarjeta" loading="lazy" decoding="async">
+                <h3 style="margin-top: 0;">01 · Venta, reparación y mantenimiento de computadores</h3>
+                
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Hardware <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Pantallas rotas o fracturadas</li>
+                            <li>Cambio de batería</li>
+                            <li>Cambio de teclado de portátil</li>
+                            <li>Cambio de cargador</li>
+                            <li>Cambio de pasta térmica</li>
+                            <li>Cambio de disco duro a SSD</li>
+                            <li>Reparación de laptops y equipos de escritorio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Software <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Formateo e instalación de software</li>
+                            <li>Actualización de programas</li>
+                            <li>Eliminación de virus</li>
+                            <li>Optimización de equipos lentos</li>
+                            <li>Soporte remoto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Equipos y WiFi <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Redes y WiFi para casa u oficina</li>
+                            <li>Venta de equipos nuevos y usados</li>
+                            <li>Venta de periféricos</li>
+                            <li>Mantenimiento preventivo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contenedor-garantias">
+                    <div class="detalle-garantia">1 año nuevo · 3 meses usado</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-seguridad" class="tab-contenido">
+            <div class="tarjeta tarjeta-servicio">
+                <img src="img/servicio-seguridad.jpg" alt="Seguridad Electrónica" class="imagen-tarjeta" loading="lazy" decoding="async">
+                <h3 style="margin-top: 0;">02 · Seguridad Electrónica</h3>
+                
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Videovigilancia <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Instalación de cámaras interiores y exteriores</li>
+                            <li>Cámaras con panel solar (sin cableado)</li>
+                            <li>Monitoreo remoto desde el celular</li>
+                            <li>Configuración de DVR / NVR</li>
+                            <li>Mantenimiento de sistemas existentes</li>
+                            <li>Cableado y puntos de cámara</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contenedor-garantias">
+                    <div class="detalle-garantia">Cotización sin costo · Garantía 1 año</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-redes" class="tab-contenido">
+            <div class="tarjeta tarjeta-servicio">
+                <img src="img/servicio-redes.jpg" alt="Redes de Datos" class="imagen-tarjeta" loading="lazy" decoding="async">
+                <h3 style="margin-top: 0;">03 · Redes de Datos</h3>
+                
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Cableado estructurado <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Cableado estructurado</li>
+                            <li>Instalación y organización de racks</li>
+                            <li>Configuración de switches</li>
+                            <li>Puntos de red certificados</li>
+                            <li>Etiquetado y documentación</li>
+                            <li>Soporte y mantenimiento de red</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo" onclick="toggleAcordeon(this)">Para empresas <i class="fas fa-chevron-down"></i></div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li>Organizamos tu rack y cableado</li>
+                            <li>Red fácil de mantener y ampliar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contenedor-garantias">
+                    <div class="detalle-garantia">Instalación certificada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="nosotros-seccion">
+        <div class="nosotros-contenedor">
+            <div class="nosotros-texto">
+                <h2>Sobre Nosotros</h2>
+                <p><strong>M R Sistemas y Servicios</strong> es un equipo de técnicos apasionados por la tecnología, con más de <strong>20 años de experiencia</strong> brindando soluciones integrales en computadores, redes y seguridad electrónica en Medellín y el Valle de Aburrá.</p>
+                <p>Nuestro fundador es <strong>Ingeniero Informático</strong>, con más de 20 años de trayectoria trabajando en diferentes áreas relacionadas con la tecnología: soporte técnico, infraestructura de redes, seguridad electrónica y venta de equipos. Ese conocimiento se traduce en un servicio <strong>honesto, rápido y a domicilio</strong> para que las personas y las empresas no tengan que preocuparse por llevar sus equipos a un taller.</p>
+                
+                <div class="nosotros-valores">
+                    <div class="valor-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Confianza</h4>
+                        <p>Garantía real en cada reparación y venta de equipos.</p>
+                    </div>
+                    <div class="valor-item">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Rapidez</h4>
+                        <p>Servicio express el mismo día, a domicilio u oficina.</p>
+                    </div>
+                    <div class="valor-item">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Profesionalismo</h4>
+                        <p>Técnicos certificados y repuestos de calidad.</p>
+                    </div>
+                    <div class="valor-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h4>Precios Justos</h4>
+                        <p>Cotización sin costo y sin sorpresas al final.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nosotros-imagen">
+                <img src="img/taller.png" alt="Taller M R Sistemas y Servicios" loading="lazy" decoding="async">
+                <div class="nosotros-badge">
+                    <strong>+20</strong>
+                    <span>años de experiencia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="venta" class="seccion-venta">
+        <h2 class="titulo-venta"><img src="img/ventas.png" alt="Icono Ventas"> VENTA DE EQUIPOS</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: var(--space-xl);">Computadores nuevos y de segunda. ¡Pregunta por nuestro stock disponible!</p>
+        <div class="grid-servicios">
+            <div class="tarjeta-venta">
+                <div style="font-size: 3rem; color: var(--acento);">🏢</div>
+                <h4>Equipos Corporativos</h4>
+                <p style="font-size: var(--font-sm); line-height: 1.6;">Portátiles y de escritorio de alta durabilidad, perfectos para oficinas, trabajos de oficina y gestión empresarial.</p>
+                <a href="https://wa.me/573113944320?text=Hola!%20Me%20interesa%20cotizar%20un%20equipo%20corporativo." target="_blank" class="boton-venta-wsp">Cotizar ahora</a>
+                <div class="info-extra">
+                    <p>💡 Ideal para trabajar o estudiar en serio, con un equipo que no te falle y dure años.</p>
+                </div>
+            </div>
+            <div class="tarjeta-venta">
+                <div style="font-size: 3rem; color: var(--acento);">🛒</div>
+                <h4>Equipos de Consumo</h4>
+                <p style="font-size: var(--font-sm); line-height: 1.6;">Ideal para el hogar, estudio, navegación y multimedia. Equipos económicos y de excelente rendimiento.</p>
+                <a href="https://wa.me/573113944320?text=Hola!%20Me%20interesa%20cotizar%20un%20equipo%20de%20consumo." target="_blank" class="boton-venta-wsp">Cotizar ahora</a>
                 <div class="info-extra">
                     <p>💡 Perfecto para tareas del hogar, colegio o navegación básica sin gastar mucho.</p>
                 </div>
@@ -21,3 +1574,1469 @@
                 </div>
             </div>
         </div>
+
+        <div class="seccion-comparativa">
+            <h2>¿CUÁL EQUIPO ES PARA TI?</h2>
+            <p>Haz clic en cada característica para ver más detalles y descubrir cuál se adapta mejor a lo que necesitas.</p>
+
+            <div class="comparativa-contenedor">
+                <div class="comparativa-encabezado">
+                    <div>CARACTERÍSTICA</div>
+                    <div>CONSUMO</div>
+                    <div>CORPORATIVO</div>
+                    <div>GAMER</div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Precio más económico</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-no">✗</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>El equipo de <strong>Consumo</strong> es el más económico del mercado. Es la opción perfecta si necesitas un computador para tareas básicas sin gastar mucho dinero.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Durabilidad de 5+ años</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-si">✓</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>Los equipos <strong>Corporativos y Gamer</strong> están construidos para durar más de 5 años sin perder rendimiento. Son inversiones a largo plazo.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Resistente a golpes y caídas</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-no">✗</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>El equipo <strong>Corporativo</strong> tiene chasis reforzados que aguantan el trato rudo del transporte diario y el uso intensivo en oficinas.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Rendimiento multitarea</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-si">✓</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>Los equipos <strong>Corporativos y Gamer</strong> no se traban cuando abres muchas pestañas, programas o aplicaciones pesadas al mismo tiempo.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Potencia para juegos y edición</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>El equipo <strong>Gamer</strong> tiene tarjetas gráficas y procesadores de alto rendimiento, ideales para juegos pesados y edición de video profesional.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Batería de larga duración</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-no">✗</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>El equipo <strong>Corporativo</strong> tiene batería de larga duración, perfecto para llevar a clases, reuniones o trabajar todo el día sin conectarlo.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Seguridad anti-robo de datos</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                        <div class="icono-check check-si">✓</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>Los equipos <strong>Corporativos y Gamer</strong> incluyen sistemas de seguridad avanzados para proteger tus contraseñas y datos bancarios.</p>
+                    </div>
+                </div>
+
+                <div class="comparativa-fila" onclick="toggleComparativa(this)">
+                    <div class="fila-principal">
+                        <div class="nombre"><i class="fas fa-chevron-right"></i> Diseño personalizable con luces</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-no">✗</div>
+                        <div class="icono-check check-si">✓</div>
+                    </div>
+                    <div class="fila-explicacion">
+                        <p>El equipo <strong>Gamer</strong> tiene luces LED personalizables y permite cambiar las piezas fácilmente para futuras mejoras.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque-pos">
+                <div class="pos-encabezado">
+                    <div class="icono-grande">💳</div>
+                    <div>
+                        <h3>¿Tienes un negocio?</h3>
+                        <p>El <strong>POS (Punto de Venta)</strong> es un equipo diseñado exclusivamente para la caja de tu local comercial. No compite con los otros: <strong>es único para lo que necesitas.</strong></p>
+                    </div>
+                </div>
+                <div class="pos-cuerpo">
+                    <div class="pos-grid">
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Todo listo para vender</strong>
+                                <span>Viene configurado para conectar caja registradora, báscula, lector de barras e impresora de facturas.</span>
+                            </div>
+                        </div>
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Pantalla táctil resistente</strong>
+                                <span>Fácil de limpiar y perfecta para atender clientes rápido en mostrador.</span>
+                            </div>
+                        </div>
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Uso intensivo 24/7</strong>
+                                <span>Diseñado para quedarse encendido todo el día en tu negocio sin recalentarse ni fallar.</span>
+                            </div>
+                        </div>
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Durabilidad de 5+ años</strong>
+                                <span>Construido con materiales reforzados para resistir el uso diario en un local comercial.</span>
+                            </div>
+                        </div>
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Seguridad anti-robo de datos</strong>
+                                <span>Protege la información de tus clientes y las transacciones de tu negocio.</span>
+                            </div>
+                        </div>
+                        <div class="pos-item" onclick="togglePosItem(this)">
+                            <div class="check-pos">✓</div>
+                            <div class="texto-pos">
+                                <strong>Asesoría especializada</strong>
+                                <span>Te ayudamos a configurarlo según el tipo de negocio: tienda, restaurante, droguería, minimarket o cualquier tipo de negocio.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pos-cta">
+                        <a href="https://wa.me/573113944320?text=Hola!%20Me%20interesa%20cotizar%20un%20equipo%20POS." target="_blank">
+                            <i class="fab fa-whatsapp"></i> Cotizar mi POS ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN DESARROLLO DE SOFTWARE
+         ============================================ -->
+    <section id="desarrollo" class="seccion-desarrollo">
+        <h2 class="seccion-titulo"><i class="fas fa-code"></i> DESARROLLO DE SOFTWARE</h2>
+        <p class="desarrollo-subtitulo">También desarrollamos software a medida</p>
+        <p class="desarrollo-descripcion">
+            Además del soporte técnico, creamos aplicaciones web personalizadas para pequeños negocios que necesitan herramientas simples y funcionales. Diseñamos, desarrollamos y entregamos proyectos listos para usar.
+        </p>
+
+        <div class="grid-proyectos">
+            <!-- Proyecto 1: Casa Dulce -->
+            <article class="proyecto-card">
+                <div class="proyecto-preview">
+                    <span>🍰</span>
+                </div>
+                <div class="proyecto-info">
+                    <h3 class="proyecto-nombre">Casa Dulce</h3>
+                    <p class="proyecto-descripcion">App de costeo de recetas para pastelerías. Calcula el costo real de cada ingrediente por gramo, arma recetas con precios sugeridos y genera cotizaciones listas para enviar por WhatsApp.</p>
+                    <div class="proyecto-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>localStorage</span>
+                    </div>
+                    <a href="https://manresone.github.io/casa-dulce-app/" target="_blank" class="proyecto-link">
+                        <i class="fas fa-external-link-alt"></i> Ver demo
+                    </a>
+                </div>
+            </article>
+
+            <!-- Proyecto 2: Cotizador App -->
+            <article class="proyecto-card">
+                <div class="proyecto-preview">
+                    <span>💰</span>
+                </div>
+                <div class="proyecto-info">
+                    <h3 class="proyecto-nombre">Cotizador App</h3>
+                    <p class="proyecto-descripcion">Herramienta web para generar cotizaciones de servicios técnicos de forma rápida y profesional. Envía el presupuesto directamente al cliente por WhatsApp con un solo clic.</p>
+                    <div class="proyecto-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>WhatsApp API</span>
+                    </div>
+                    <a href="https://manresone.github.io/cotizadorApp/" target="_blank" class="proyecto-link">
+                        <i class="fas fa-external-link-alt"></i> Ver demo
+                    </a>
+                </div>
+            </article>
+
+            <!-- Proyecto 3: Paginamr -->
+            <article class="proyecto-card">
+                <div class="proyecto-preview">
+                    <span>💻</span>
+                </div>
+                <div class="proyecto-info">
+                    <h3 class="proyecto-nombre">Sitio Web M R Sistemas</h3>
+                    <p class="proyecto-descripcion">Sitio corporativo con catálogo de productos, carrito de cotización, sistema para compartir links de productos y múltiples integraciones con WhatsApp. La web que estás viendo ahora mismo.</p>
+                    <div class="proyecto-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Responsive</span>
+                    </div>
+                    <a href="https://manresone.github.io/paginamr/" target="_blank" class="proyecto-link">
+                        <i class="fas fa-external-link-alt"></i> Ver demo
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Botón "Ver más proyectos" -->
+        <div class="contenedor-ver-proyectos">
+            <a href="https://github.com/manresone" target="_blank" class="boton-ver-proyectos">
+                Ver más proyectos <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN TIENDA -->
+    <section id="tienda" class="tienda-seccion">
+        <h2 class="seccion-titulo"><i class="fas fa-shopping-bag" style="color: var(--acento);"></i> TIENDA</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--gris-oscuro); font-size: var(--font-md);">Selecciona los productos que te interesan y envíanos tu solicitud por WhatsApp.</p>
+        
+        <!-- BANNER DE PRODUCTO COMPARTIDO -->
+        <div class="banner-compartido" id="bannerCompartido">
+            <i class="fas fa-share-alt"></i>
+            <span>📍 Te compartieron un producto — lo encontrarás resaltado abajo</span>
+        </div>
+        
+        <div class="tienda-filtros">
+            <button class="filtro-btn" onclick="filtrarProductos('todos', this)">Todos</button>
+            <button class="filtro-btn activo" onclick="filtrarProductos('Corporativo', this)">Corporativos</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Consumo', this)">Consumo</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Gamer', this)">Gamer</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Componentes', this)">Componentes</button>
+            <button class="filtro-btn" onclick="filtrarProductos('Periféricos', this)">Periféricos</button>
+        </div>
+
+        <div class="tienda-grid" id="tiendaGrid"></div>
+
+        <div class="contenedor-ver-mas">
+            <button class="boton-ver-mas" id="botonVerMas" onclick="cargarMasProductos()">
+                <i class="fas fa-plus-circle"></i> Ver más productos
+            </button>
+        </div>
+        <span class="contador-productos" id="contadorProductos"></span>
+
+        <!-- CTA AL CATÁLOGO DE WHATSAPP -->
+        <div class="cta-catalogo-wsp">
+            <h3><i class="fab fa-whatsapp"></i> ¿Buscas más equipos?</h3>
+            <p>Explora nuestro catálogo completo actualizado en WhatsApp Business. Encuentra más modelos, componentes y periféricos disponibles.</p>
+            <a href="https://wa.me/c/573113944320" target="_blank" class="boton-catalogo-wsp">
+                <i class="fab fa-whatsapp"></i> Ver catálogo completo en WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section class="banner-domicilio">
+        <img src="img/domicilio.png" alt="Servicio a Domicilio" loading="lazy" decoding="async">
+        <h2>Servicio Express a Domicilio</h2>
+        <p>Llegamos a tu casa u oficina en El Poblado y el Valle de Aburrá. ¡No muevas tu equipo!</p>
+        <a href="https://wa.me/573113944320?text=Hola!%20Necesito%20servicio%20a%20domicilio." target="_blank" class="boton-glass">Agendar Visita</a>
+    </section>
+
+    <section id="descargas" class="seccion-descargas">
+        <h2 class="seccion-titulo"><img src="img/descargas.png" alt="Icono Descargas"> DESCARGAS</h2>
+        <p style="text-align: center; margin-bottom: var(--space-xl);">Consulta nuestros catálogos y descarga nuestro brochure.</p>
+        <div class="grid-descargas">
+            <div class="tarjeta-descarga">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Brochure General</h3>
+                <p>Vista previa y descarga del portafolio de servicios.</p>
+                <a href="https://drive.google.com/file/d/172tVXVX6GBXfG6grzs9RkUZ52c8DppmT/preview" target="_blank" class="boton-glass">Ver / Descargar</a>
+            </div>
+            
+            <div id="acceso-privado" class="acceso-privado">
+                <h3>🔒 Acceso Interno</h3>
+                <p>Ingrese la contraseña para ver los archivos internos.</p>
+                <input type="password" id="claveAcceso" placeholder="Contraseña">
+                <button onclick="verificarAcceso()">Entrar</button>
+                <div class="mensaje-error" id="mensajeError">Contraseña incorrecta</div>
+            </div>
+        </div>
+
+        <div id="area-interna" class="area-interna-oculta">
+            <h3 style="text-align: center; margin-bottom: var(--space-md);">📂 Recursos Internos</h3>
+            <div class="grid-descargas">
+                <div class="tarjeta-descarga">
+                    <i class="fas fa-download"></i>
+                    <h3>Actualizar Windows 11</h3>
+                    <a href="https://drive.google.com/uc?export=download&id=10sXg0T6iZUNokWm1RPKMLqt71Q4Lh1xo" target="_blank" class="boton-glass">Descargar</a>
+                </div>
+                <div class="tarjeta-descarga">
+                    <i class="fas fa-download"></i>
+                    <h3>Office para Mac</h3>
+                    <a href="https://drive.google.com/uc?export=download&id=1L0rdIYTe1ifcx0IZyFxk31Zncw1jWq8a" target="_blank" class="boton-glass">Descargar</a>
+                </div>
+                <div class="tarjeta-descarga">
+                    <i class="fas fa-download"></i>
+                    <h3>Office para Windows</h3>
+                    <a href="https://drive.google.com/uc?export=download&id=15WzeYOdWS5rEwfwKW2R_tw78lPdGBgL6" target="_blank" class="boton-glass">Descargar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="seccion">
+        <h2 class="seccion-titulo"><img src="img/nosotros.png" alt="Icono Nosotros"> NUESTRO TRABAJO</h2>
+        <div class="carrusel-trabajos">
+            <div class="carrusel-items">
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto1.jpg" alt="Trabajo 1" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto2.jpg" alt="Trabajo 2" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto3.jpg" alt="Trabajo 3" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto4.jpg" alt="Trabajo 4" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto5.jpg" alt="Trabajo 5" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto6.jpg" alt="Trabajo 6" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto7.jpg" alt="Trabajo 7" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto8.jpg" alt="Trabajo 8" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto9.jpg" alt="Trabajo 9" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto10.jpg" alt="Trabajo 10" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto11.jpg" alt="Trabajo 11" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto12.jpg" alt="Trabajo 12" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto13.jpg" alt="Trabajo 13" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><video src="img/video1.mp4" muted loading="lazy"></video><div class="icono-play"><i class="fas fa-play"></i></div></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><video src="img/video2.mp4" muted loading="lazy"></video><div class="icono-play"><i class="fas fa-play"></i></div></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto1.jpg" alt="Trabajo 1" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto2.jpg" alt="Trabajo 2" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto3.jpg" alt="Trabajo 3" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto4.jpg" alt="Trabajo 4" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto5.jpg" alt="Trabajo 5" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto6.jpg" alt="Trabajo 6" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto7.jpg" alt="Trabajo 7" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto8.jpg" alt="Trabajo 8" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto9.jpg" alt="Trabajo 9" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto10.jpg" alt="Trabajo 10" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto11.jpg" alt="Trabajo 11" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto12.jpg" alt="Trabajo 12" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><img src="img/foto13.jpg" alt="Trabajo 13" loading="lazy" decoding="async"></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><video src="img/video1.mp4" muted loading="lazy"></video><div class="icono-play"><i class="fas fa-play"></i></div></div>
+                <div class="item-carrusel" onclick="abrirLightbox(this)"><video src="img/video2.mp4" muted loading="lazy"></video><div class="icono-play"><i class="fas fa-play"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="consejos" class="consejos-seccion">
+        <h2 class="seccion-titulo"><i class="fas fa-lightbulb" style="color: var(--acento);"></i> CONSEJOS ÚTILES</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--gris-oscuro); font-size: var(--font-md);">Aprende con nuestros expertos y toma mejores decisiones sobre tu tecnología.</p>
+        
+        <div class="consejos-grid">
+            <article class="consejo-tarjeta" id="consejo1">
+                <div class="consejo-imagen">
+                    <i class="fas fa-laptop-medical"></i>
+                </div>
+                <div class="consejo-cuerpo">
+                    <span class="consejo-categoria">Mantenimiento</span>
+                    <h3 class="consejo-titulo">5 señales de que tu laptop necesita mantenimiento urgente</h3>
+                    <p class="consejo-resumen">Ruidos extraños, calentamiento excesivo o lentitud extrema son síntomas de que tu equipo necesita una revisión técnica.</p>
+                    
+                    <div class="consejo-contenido-completo">
+                        <p>Identificar a tiempo estos síntomas puede ahorrarte una reparación costosa. Estas son las <strong>5 señales más comunes</strong>:</p>
+                        <ul>
+                            <li><strong>Calentamiento excesivo:</strong> Si el ventilador suena muy fuerte o la parte inferior quema, la pasta térmica ya no está haciendo su trabajo.</li>
+                            <li><strong>Lentitud extrema:</strong> Cuando abrir el navegador tarda más de 30 segundos, es señal de que el disco duro está fallando o el sistema está saturado.</li>
+                            <li><strong>Ruidos extraños:</strong> Un "clic-clic" constante puede ser el disco duro avisando que va a fallar. Mejor respaldar todo ya.</li>
+                            <li><strong>Apagados repentinos:</strong> Si se apaga sin razón, puede ser un problema de batería o de temperatura.</li>
+                            <li><strong>Pantalla con líneas o parpadeos:</strong> Es señal de un problema en el bus de video o en la propia pantalla.</li>
+                        </ul>
+                        <p><strong>Recomendación:</strong> Si notas 2 o más de estas señales, agenda una revisión preventiva. Un mantenimiento a tiempo (limpieza + pasta térmica) puede alargar la vida de tu laptop varios años.</p>
+                    </div>
+                    
+                    <div class="consejo-botones">
+                        <button class="boton-leer-mas" onclick="toggleConsejo(this)">
+                            Leer más <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://wa.me/573113944320?text=Hola!%20Quiero%20agendar%20un%20mantenimiento%20para%20mi%20laptop." target="_blank" class="boton-consultar">
+                            <i class="fab fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="consejo-tarjeta" id="consejo2">
+                <div class="consejo-imagen">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <div class="consejo-cuerpo">
+                    <span class="consejo-categoria">Negocios</span>
+                    <h3 class="consejo-titulo">Cómo elegir el mejor POS para tu negocio en 2026</h3>
+                    <p class="consejo-resumen">No todos los POS sirven para todos los negocios. Te explicamos qué buscar según tu tipo de local.</p>
+                    
+                    <div class="consejo-contenido-completo">
+                        <p>Elegir un POS es una inversión importante. Antes de comprar, revisa estos <strong>puntos clave</strong>:</p>
+                        <ul>
+                            <li><strong>Tipo de negocio:</strong> Una tienda de barrio necesita un POS sencillo. Un restaurante necesita uno con comandas. Una droguería necesita uno compatible con facturación electrónica DIAN.</li>
+                            <li><strong>Sistema operativo:</strong> Windows es más universal y compatible con más software. Android es más económico y rápido.</li>
+                            <li><strong>Periféricos:</strong> Verifica que tenga los puertos necesarios para tu lector de barras, báscula e impresora.</li>
+                            <li><strong>Pantalla táctil:</strong> Esencial si atiendes muchos clientes al día. Ahorra tiempo y es más higiénico.</li>
+                            <li><strong>Soporte local:</strong> Muy importante. ¿Qué pasa si se daña un domingo? ¿Tienes quién te lo arregle rápido?</li>
+                            <li><strong>Uso 24/7:</strong> Un POS de calidad puede estar encendido todo el día sin fallar. Uno económico probablemente no.</li>
+                        </ul>
+                        <p><strong>Recomendación:</strong> No escatimes en el POS. Es el corazón de tu negocio y un equipo económico puede hacerte perder más dinero del que ahorraste.</p>
+                    </div>
+                    
+                    <div class="consejo-botones">
+                        <button class="boton-leer-mas" onclick="toggleConsejo(this)">
+                            Leer más <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://wa.me/573113944320?text=Hola!%20Quiero%20asesor%C3%ADa%20para%20elegir%20un%20POS." target="_blank" class="boton-consultar">
+                            <i class="fab fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="consejo-tarjeta" id="consejo3">
+                <div class="consejo-imagen">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <div class="consejo-cuerpo">
+                    <span class="consejo-categoria">Seguridad</span>
+                    <h3 class="consejo-titulo">Errores comunes al comprar un PC usado (y cómo evitarlos)</h3>
+                    <p class="consejo-resumen">Comprar un computador de segunda puede ser una gran inversión si sabes qué revisar antes de pagar.</p>
+                    
+                    <div class="consejo-contenido-completo">
+                        <p>Un PC usado bien revisado puede durar años. Estos son los <strong>7 puntos clave</strong> que debes verificar:</p>
+                        <ul>
+                            <li><strong>Estado de la batería:</strong> Pídele al vendedor que te muestre el reporte de salud de la batería. Si está por debajo del 70%, va a necesitar cambio pronto.</li>
+                            <li><strong>Salud del disco duro:</strong> Usa un programa como CrystalDiskInfo para verificar los ciclos de lectura/escritura.</li>
+                            <li><strong>Píxeles muertos:</strong> Prueba la pantalla con un fondo blanco y uno negro para detectar puntos defectuosos.</li>
+                            <li><strong>Puertos y teclado:</strong> Prueba todos los USB, HDMI, el teclado y el touchpad. Que no tenga teclas que no respondan.</li>
+                            <li><strong>Temperatura:</strong> Después de 15 minutos de uso, verifica que no se caliente demasiado. Puede necesitar cambio de pasta térmica.</li>
+                            <li><strong>Historial de reparaciones:</strong> Pregunta si tuvo cambios de pantalla, teclado o motherboard. Un equipo abierto muchas veces puede dar problemas.</li>
+                            <li><strong>Garantía:</strong> Siempre pide al menos 3 meses de garantía. Si el vendedor no da garantía, desconfía.</li>
+                        </ul>
+                        <p><strong>Recomendación:</strong> En M R Sistemas revisamos cada equipo usado antes de venderlo, cambiamos pasta térmica, limpiamos y damos 3 meses de garantía. No compres a ciegas.</p>
+                    </div>
+                    
+                    <div class="consejo-botones">
+                        <button class="boton-leer-mas" onclick="toggleConsejo(this)">
+                            Leer más <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://wa.me/573113944320?text=Hola!%20Quiero%20comprar%20un%20PC%20usado%20con%20garant%C3%ADa." target="_blank" class="boton-consultar">
+                            <i class="fab fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-seccion">
+        <h2 class="seccion-titulo"><img src="img/faqs.png" alt="Icono FAQs"> PREGUNTAS FRECUENTES</h2>
+        <div class="faq-item">
+            <div class="faq-pregunta" onclick="toggleFaq(this)">¿Cuánto tiempo tarda una reparación?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-respuesta"><p>Depende de la falla. Reparaciones de software suelen tardar de 1 a 2 horas. Cambios de pantalla o hardware pueden tardar de 1 a 3 días dependiendo de la disponibilidad del repuesto.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-pregunta" onclick="toggleFaq(this)">¿Los equipos usados tienen garantía?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-respuesta"><p>Sí. Todos nuestros equipos nuevos tienen 1 año de garantía, y los equipos usados tienen 3 meses de garantía por defectos de fábrica.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-pregunta" onclick="toggleFaq(this)">¿Puedo pagar con Nequi o Bancolombia?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-respuesta"><p>Sí, aceptamos pagos en efectivo, transferencia bancaria, Nequi y Bancolombia.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-pregunta" onclick="toggleFaq(this)">¿Atienden a domicilio?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-respuesta"><p>Sí. Ofrecemos servicio a domicilio en El Poblado y el Valle de Aburrá para reparaciones, instalaciones de cámaras y redes.</p></div>
+        </div>
+    </section>
+
+    <section class="seccion-marcas">
+        <h2 class="seccion-titulo"><img src="img/marcas.png" alt="Icono Marcas"> TRABAJAMOS CON LAS MEJORES MARCAS DEL MERCADO</h2>
+        <p>Especialistas en hardware, redes y seguridad electrónica.</p>
+        <div class="logos">
+            <div class="logo_items">
+                <img src="img/intel.png" alt="Intel" loading="lazy" decoding="async">
+                <img src="img/amd.png" alt="AMD" loading="lazy" decoding="async">
+                <img src="img/nvidia.png" alt="NVIDIA" loading="lazy" decoding="async">
+                <img src="img/hp.png" alt="HP" loading="lazy" decoding="async">
+                <img src="img/lenovo.png" alt="Lenovo" loading="lazy" decoding="async">
+                <img src="img/dell.png" alt="Dell" loading="lazy" decoding="async">
+                <img src="img/asus.png" alt="Asus" loading="lazy" decoding="async">
+                <img src="img/windows.png" alt="Windows" loading="lazy" decoding="async">
+                <img src="img/linux.png" alt="Linux" loading="lazy" decoding="async">
+                <img src="img/debian.png" alt="Debian" loading="lazy" decoding="async">
+                <img src="img/google.png" alt="Google" loading="lazy" decoding="async">
+                <img src="img/mikrotik.png" alt="MikroTik" loading="lazy" decoding="async">
+                <img src="img/fortinet.png" alt="Fortinet" loading="lazy" decoding="async">
+                <img src="img/ruijie.png" alt="Ruijie" loading="lazy" decoding="async">
+                <img src="img/dlink.png" alt="D-Link" loading="lazy" decoding="async">
+                <img src="img/tplink.png" alt="TP-Link" loading="lazy" decoding="async">
+                <img src="img/wifi.png" alt="WiFi" loading="lazy" decoding="async">
+                <img src="img/hikvision.png" alt="Hikvision" loading="lazy" decoding="async">
+                <img src="img/dahua.png" alt="Dahua" loading="lazy" decoding="async">
+                <img src="img/hilook.png" alt="HiLook" loading="lazy" decoding="async">
+                <img src="img/zkteco.png" alt="ZKTeco" loading="lazy" decoding="async">
+                <img src="img/ezviz.png" alt="EZVIZ" loading="lazy" decoding="async">
+                <img src="img/epson.png" alt="Epson" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto-seccion">
+        <div class="formulario tarjeta">
+            <h2 style="margin-top: 0;">¿Listo para resolver tu problema?</h2>
+            <p>Cuéntanos tu problema; te damos la solución de forma clara y rápida.</p>
+            <form id="formularioContacto">
+                <input type="text" id="nombre" placeholder="Tu Nombre" required>
+                <input type="text" id="mensaje" placeholder="¿Qué servicio necesitas?" required>
+                <button type="submit" class="boton-whatsapp"><i class="fab fa-whatsapp"></i> Contáctanos ahora</button>
+            </form>
+            <div style="margin-top: var(--space-md); font-size: var(--font-sm);">
+                <h4 style="margin: 0;">Métodos de pago</h4>
+                <p>🏠 Servicio a domicilio · 💻 Soporte remoto · 💰 Efectivo · Transferencia · Nequi / Bancolombia</p>
+                <h4 style="margin: var(--space-md) 0 5px 0;">Síguenos y escríbenos</h4>
+                <p style="margin: 0;">
+                    <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/mrsolutionsmed" target="_blank" style="color: var(--negro); font-weight: bold;">@mrsolutionsmed</a><br>
+                    <i class="fas fa-envelope"></i> <a href="mailto:mrsistemasyservicio@gmail.com" style="color: var(--negro); font-weight: bold;">mrsistemasyservicio@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="mapa-container tarjeta">
+            <h2 style="margin-top: 0;">Mapa de Cobertura</h2>
+            <div style="position: relative;">
+                <div class="mapa-etiqueta">📍 El Poblado, Medellín</div>
+                <div class="mapa-marcador"></div>
+                <iframe src="https://www.google.com/maps?q=6.153965,-75.533979&z=13&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="info-cobertura">
+                <h3>Zona de cobertura</h3>
+                <p>El Poblado · Envigado · Itagüí · Sabaneta · Caldas · El Retiro · La Ceja · Guarne · Rionegro</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</div>
+        <div class="lightbox-anterior" onclick="cambiarLightbox(-1)">&#10094;</div>
+        <div class="lightbox-siguiente" onclick="cambiarLightbox(1)">&#10095;</div>
+        <div id="lightbox-contenido"></div>
+        <div id="lightbox-contador" class="lightbox-contador"></div>
+    </div>
+
+    <div class="carrito-widget">
+        <div class="carrito-panel" id="carritoPanel">
+            <div class="carrito-header">
+                <h4><i class="fas fa-file-invoice"></i> Solicitud de cotización</h4>
+                <button onclick="toggleCarrito()">&times;</button>
+            </div>
+            <div class="carrito-items" id="carritoItems">
+                <div class="carrito-vacio">
+                    <i class="fas fa-shopping-basket"></i>
+                    Aún no has seleccionado productos
+                </div>
+            </div>
+            <div class="carrito-footer">
+                <button type="button" class="boton-whatsapp" onclick="enviarCotizacion()">
+                    <i class="fab fa-whatsapp"></i> Solicitar cotización formal
+                </button>
+                <p class="carrito-nota">Recibirá respuesta con precios y disponibilidad en horario comercial.</p>
+            </div>
+        </div>
+        <div class="carrito-burbuja" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="carrito-contador" id="carritoContador">0</span>
+        </div>
+    </div>
+
+    <div class="wa-widget">
+        <div class="wa-panel" id="waPanel">
+            <div class="wa-panel-header">
+                <div class="wa-panel-header-info">
+                    <div class="wa-panel-avatar">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h4>M R Sistemas</h4>
+                        <p>En línea</p>
+                    </div>
+                </div>
+                <button class="wa-panel-cerrar" onclick="toggleWaPanel()">&times;</button>
+            </div>
+            <div class="wa-panel-cuerpo">
+                <div class="wa-mensaje">
+                    ¡Hola! 👋 Soy el equipo de <strong>M R Sistemas y Servicios</strong>. ¿En qué podemos ayudarte hoy?
+                </div>
+                <a href="https://wa.me/573113944320?text=Hola!%20Necesito%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" class="wa-boton-iniciar">
+                    <i class="fab fa-whatsapp"></i> Iniciar chat por WhatsApp
+                </a>
+            </div>
+            <div class="wa-panel-footer">
+                Respondemos en minutos ⚡
+            </div>
+        </div>
+        <div class="wa-burbuja" onclick="toggleWaPanel()">
+            <i class="fab fa-whatsapp"></i>
+            <span class="wa-notificacion">1</span>
+        </div>
+    </div>
+
+    <!-- TOAST DE NOTIFICACIÓN -->
+    <div class="toast-notificacion" id="toastNotificacion">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastTexto">Link copiado</span>
+    </div>
+
+    <footer>
+        <p>© 2026 M R Sistemas y Servicios. Todos los derechos reservados.</p>
+        <div style="margin: var(--space-md) 0;">
+            <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/mrsolutionsmed" target="_blank" style="color: var(--verde-wsp); text-decoration: none; font-weight: bold;">@mrsolutionsmed</a>
+            <span style="margin: 0 10px; color: #555;">|</span>
+            <i class="fas fa-envelope"></i> <a href="mailto:mrsistemasyservicio@gmail.com" style="color: var(--verde-wsp); text-decoration: none; font-weight: bold;">mrsistemasyservicio@gmail.com</a>
+        </div>
+        <p><a href="https://wa.me/573113944320" target="_blank" style="color: var(--verde-wsp); text-decoration: none; font-weight: bold;">contáctanos</a></p>
+    </footer>
+
+    <script>
+        function vibrar() {
+            if ('vibrate' in navigator) {
+                try {
+                    navigator.vibrate([30, 20, 30]);
+                } catch(e) {}
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            var elemento = e.target.closest('button, a, .tab-boton, .acordeon-titulo, .faq-pregunta, .fila-principal, .item-carrusel, .boton-leer-mas, .boton-consultar, .wa-burbuja, .wa-panel-cerrar, .pos-item, .filtro-btn, .boton-agregar, .carrito-burbuja, .boton-ver-mas, .boton-compartir, .boton-catalogo-wsp, .boton-ver-proyectos, .proyecto-link');
+            if (!elemento) return;
+            vibrar();
+            var rect = elemento.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var size = Math.max(rect.width, rect.height) * 2;
+            var ripple = document.createElement('span');
+            ripple.className = 'ripple-effect';
+            ripple.style.width = size + 'px';
+            ripple.style.height = size + 'px';
+            ripple.style.left = (x - size / 2) + 'px';
+            ripple.style.top = (y - size / 2) + 'px';
+            if (getComputedStyle(elemento).position === 'static') {
+                elemento.style.position = 'relative';
+            }
+            if (getComputedStyle(elemento).overflow !== 'hidden' && !elemento.classList.contains('wa-burbuja') && !elemento.classList.contains('carrito-burbuja')) {
+                elemento.style.overflow = 'hidden';
+            }
+            elemento.appendChild(ripple);
+            setTimeout(function() {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var tabs = document.getElementById('tabsContenedor');
+            if (tabs) tabs.classList.add('tab-1');
+        });
+
+        function abrirTab(evt, nombreTab) {
+            var i, tabContenido, tabBoton;
+            tabContenido = document.getElementsByClassName("tab-contenido");
+            for (i = 0; i < tabContenido.length; i++) {
+                tabContenido[i].className = tabContenido[i].className.replace(" activo", "");
+            }
+            tabBoton = document.getElementsByClassName("tab-boton");
+            for (i = 0; i < tabBoton.length; i++) {
+                tabBoton[i].className = tabBoton[i].className.replace(" activo", "");
+            }
+            document.getElementById(nombreTab).className += " activo";
+            evt.currentTarget.className += " activo";
+
+            var contenedor = document.getElementById('tabsContenedor');
+            contenedor.classList.remove('tab-1', 'tab-2', 'tab-3');
+            if (nombreTab === 'tab-computadores') contenedor.classList.add('tab-1');
+            if (nombreTab === 'tab-seguridad') contenedor.classList.add('tab-2');
+            if (nombreTab === 'tab-redes') contenedor.classList.add('tab-3');
+        }
+
+        function toggleAcordeon(elemento) { 
+            var item = elemento.parentElement; 
+            item.classList.toggle('abierto'); 
+        }
+        
+        function toggleFaq(elemento) { 
+            var item = elemento.parentElement; 
+            item.classList.toggle('abierto'); 
+        }
+        
+        function toggleMenu() { 
+            var nav = document.getElementById('menuNav'); 
+            nav.classList.toggle('active'); 
+        }
+
+        function toggleWaPanel() {
+            document.getElementById('waPanel').classList.toggle('abierto');
+        }
+
+        function toggleComparativa(elemento) {
+            var filas = document.querySelectorAll('.comparativa-fila');
+            filas.forEach(function(fila) {
+                if (fila !== elemento && fila.classList.contains('activa')) {
+                    fila.classList.remove('activa');
+                }
+            });
+            elemento.classList.toggle('activa');
+        }
+
+        function toggleConsejo(elemento) {
+            var tarjeta = elemento.closest('.consejo-tarjeta');
+            tarjeta.classList.toggle('abierto');
+        }
+
+        function togglePosItem(elemento) {
+            if (window.innerWidth <= 768) {
+                elemento.classList.toggle('abierto');
+            }
+        }
+
+        // ============================================
+        // TIENDA DE PRODUCTOS Y CARRITO
+        // ============================================
+        
+        // 📸 ESTRUCTURA DE PRODUCTOS
+        // Para agregar/modificar:
+        // - nombre: nombre del producto (OBLIGATORIO, entre comillas)
+        // - categoria: Corporativo, Consumo, Gamer, Componentes, Periféricos
+        // - especificaciones: descripción breve
+        // - estado: Nuevo, Usado, Consultar
+        // - icono: emoji de respaldo si no hay foto
+        // - foto: ruta de la imagen (ej: "img/productos/mi-foto.png") o null para usar el icono
+        // - precio: texto del precio (ej: "$2.245.000") o null para "Precio según disponibilidad"
+        // ⚠️ IMPORTANTE: Cada propiedad termina en COMA, y los textos van entre COMILLAS
+        
+        const PRODUCTOS = [
+            { 
+                nombre: "Dell Corporativo",
+                categoria: "Corporativo", 
+                especificaciones: "Procesador Intel Core i5 13va, Memoria RAM de 8GB, Disco duro 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "💻",
+                foto: "img/productos/pcdell.png",
+                precio: "$2.245.000"
+            },
+            { 
+                nombre: "Portátil Lenovo ThinkPad T14", 
+                categoria: "Corporativo", 
+                especificaciones: "Procesador INTEL Core i5 10va, MEMORIA 8GB RAM, disco duro256GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: "img/productos/lenovo_E14-segunda.png",
+                precio: "$1.500.000"
+            },
+            { 
+                nombre: "Portátil Dell Latitude 5420", 
+                categoria: "Corporativo", 
+                especificaciones: "Core i5 11va, 16GB RAM, 256GB SSD", 
+                estado: "Usado", 
+                icono: "💻",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Acer Aspire 3", 
+                categoria: "Consumo", 
+                especificaciones: "Ryzen 5, 8GB RAM, 256GB SSD", 
+                estado: "Nuevo", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil ASUS VivoBook", 
+                categoria: "Consumo", 
+                especificaciones: "Core i3 12va, 8GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil HP 15 Essential", 
+                categoria: "Consumo", 
+                especificaciones: "Core i5, 8GB RAM, 1TB HDD", 
+                estado: "Usado", 
+                icono: "🖥️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil ASUS ROG Strix G16", 
+                categoria: "Gamer", 
+                especificaciones: "Core i7, RTX 4060, 16GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil Lenovo LOQ 15", 
+                categoria: "Gamer", 
+                especificaciones: "Ryzen 7, RTX 4050, 16GB RAM, 512GB SSD", 
+                estado: "Nuevo", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Portátil MSI Katana 15", 
+                categoria: "Gamer", 
+                especificaciones: "Core i7, RTX 3050, 8GB RAM, 512GB SSD", 
+                estado: "Consultar", 
+                icono: "🎮",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "SSD Kingston NV2 500GB NVMe", 
+                categoria: "Componentes", 
+                especificaciones: "M.2 NVMe PCIe 4.0", 
+                estado: "Nuevo", 
+                icono: "💾",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "SSD Samsung 980 1TB NVMe", 
+                categoria: "Componentes", 
+                especificaciones: "M.2 NVMe PCIe 3.0", 
+                estado: "Nuevo", 
+                icono: "💾",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Memoria RAM DDR4 8GB", 
+                categoria: "Componentes", 
+                especificaciones: "2666MHz SODIMM portátil", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Memoria RAM DDR4 16GB", 
+                categoria: "Componentes", 
+                especificaciones: "3200MHz SODIMM portátil", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Pantalla para portátil 15.6\"", 
+                categoria: "Componentes", 
+                especificaciones: "FHD 1920x1080 30 pines", 
+                estado: "Consultar", 
+                icono: "📺",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Batería para portátil HP", 
+                categoria: "Componentes", 
+                especificaciones: "Compatible modelos HP Pavilion y ProBook", 
+                estado: "Consultar", 
+                icono: "🔋",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Cargador para portátil Lenovo", 
+                categoria: "Componentes", 
+                especificaciones: "65W USB-C original", 
+                estado: "Nuevo", 
+                icono: "🔌",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Mouse Logitech M170", 
+                categoria: "Periféricos", 
+                especificaciones: "Inalámbrico USB", 
+                estado: "Nuevo", 
+                icono: "🖱️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Teclado Logitech K120", 
+                categoria: "Periféricos", 
+                especificaciones: "USB estándar español", 
+                estado: "Nuevo", 
+                icono: "⌨️",
+                foto: null,
+                precio: null
+            },
+            { 
+                nombre: "Impresora Epson L3250", 
+                categoria: "Periféricos", 
+                especificaciones: "Multifuncional WiFi tanque de tinta", 
+                estado: "Nuevo", 
+                icono: "🖨️",
+                foto: null,
+                precio: null
+            }
+        ];
+
+        let carrito = [];
+        let filtroActual = 'Corporativo';
+        let productosVisibles = 12;
+        const PRODUCTOS_POR_CARGA = 12;
+
+        // ============================================
+        // UTILIDAD: Generar slug desde nombre
+        // Ejemplo: "Portátil HP 15 Essential" → "portatil-hp-15-essential"
+        // ============================================
+        function generarSlug(texto) {
+            return texto
+                .toString()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/ñ/g, 'n')
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        // ============================================
+        // UTILIDAD: Obtener URL base automáticamente
+        // Funciona en GitHub Pages, local y cualquier hosting futuro
+        // ============================================
+        function obtenerUrlBase() {
+            let path = window.location.pathname;
+            path = path.replace(/index\.html$/i, '');
+            if (!path.endsWith('/')) path += '/';
+            return window.location.origin + path;
+        }
+
+        // ============================================
+        // TOAST: Notificación breve
+        // ============================================
+        let toastTimer = null;
+        function mostrarToast(texto, icono) {
+            const toast = document.getElementById('toastNotificacion');
+            const textoEl = document.getElementById('toastTexto');
+            const iconoEl = toast.querySelector('i');
+            if (!toast || !textoEl) return;
+            
+            textoEl.textContent = texto;
+            if (icono) {
+                iconoEl.className = icono;
+            }
+            
+            toast.classList.add('activo');
+            
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(function() {
+                toast.classList.remove('activo');
+            }, 2500);
+        }
+
+        // ============================================
+        // COPIAR LINK DEL PRODUCTO AL PORTAPAPELES
+        // ============================================
+        function compartirProducto(index) {
+            const producto = PRODUCTOS[index];
+            if (!producto) return;
+            
+            const slug = generarSlug(producto.nombre);
+            const url = obtenerUrlBase() + '?producto=' + slug;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function() {
+                    mostrarToast('Link copiado. Pegalo en tu chat', 'fas fa-check-circle');
+                }).catch(function() {
+                    copiarFallback(url);
+                });
+            } else {
+                copiarFallback(url);
+            }
+        }
+
+        function copiarFallback(url) {
+            const input = document.createElement('textarea');
+            input.value = url;
+            input.style.position = 'fixed';
+            input.style.top = '0';
+            input.style.left = '0';
+            input.style.opacity = '0';
+            input.style.pointerEvents = 'none';
+            document.body.appendChild(input);
+            input.focus();
+            input.select();
+            
+            let exito = false;
+            try {
+                exito = document.execCommand('copy');
+            } catch (e) {
+                exito = false;
+            }
+            
+            document.body.removeChild(input);
+            
+            if (exito) {
+                mostrarToast('Link copiado. Pegalo en tu chat', 'fas fa-check-circle');
+            } else {
+                window.prompt('Copia este link manualmente:', url);
+            }
+        }
+
+        // ============================================
+        // DETECTAR PRODUCTO COMPARTIDO EN LA URL
+        // Con reintentos para WebView de WhatsApp
+        // ============================================
+        let productoCompartidoDetectado = false;
+        
+        function detectarProductoCompartido() {
+            if (productoCompartidoDetectado) return;
+            
+            const params = new URLSearchParams(window.location.search);
+            const slugBuscado = params.get('producto');
+            if (!slugBuscado) return;
+            
+            let productoEncontrado = null;
+            PRODUCTOS.forEach(function(prod) {
+                if (generarSlug(prod.nombre) === slugBuscado) {
+                    productoEncontrado = prod;
+                }
+            });
+            
+            if (!productoEncontrado) return;
+            
+            productoCompartidoDetectado = true;
+            
+            filtroActual = productoEncontrado.categoria;
+            productosVisibles = PRODUCTOS.length;
+            
+            const mapaCategoria = {
+                'Corporativo': 'Corporativos',
+                'Consumo': 'Consumo',
+                'Gamer': 'Gamer',
+                'Componentes': 'Componentes',
+                'Periféricos': 'Periféricos'
+            };
+            const textoBoton = mapaCategoria[productoEncontrado.categoria] || 'Todos';
+            document.querySelectorAll('.filtro-btn').forEach(function(btn) {
+                btn.classList.remove('activo');
+                if (btn.textContent.trim() === textoBoton) {
+                    btn.classList.add('activo');
+                }
+            });
+            
+            const banner = document.getElementById('bannerCompartido');
+            if (banner) banner.classList.add('visible');
+            
+            renderizarProductos();
+            
+            scrollYDestacar(slugBuscado);
+        }
+        
+        function scrollYDestacar(slugBuscado) {
+            const intentos = [500, 1500, 3000];
+            
+            intentos.forEach(function(delay) {
+                setTimeout(function() {
+                    const tarjetas = document.querySelectorAll('.producto-tarjeta');
+                    const filtrados = filtroActual === 'todos' 
+                        ? PRODUCTOS 
+                        : PRODUCTOS.filter(p => p.categoria === filtroActual);
+                    
+                    tarjetas.forEach(function(tarjeta, idx) {
+                        const prodEnFiltro = filtrados[idx];
+                        if (prodEnFiltro && generarSlug(prodEnFiltro.nombre) === slugBuscado) {
+                            tarjeta.classList.add('abierto');
+                            tarjeta.classList.add('destacado');
+                            
+                            try {
+                                tarjeta.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'center' 
+                                });
+                            } catch(e) {
+                                const y = tarjeta.getBoundingClientRect().top + window.pageYOffset - 120;
+                                window.scrollTo(0, y);
+                            }
+                        }
+                    });
+                }, delay);
+            });
+            
+            setTimeout(function() {
+                document.querySelectorAll('.producto-tarjeta.destacado').forEach(function(t) {
+                    t.classList.remove('destacado');
+                });
+            }, 8000);
+            
+            const primerToque = function() {
+                const tarjetas = document.querySelectorAll('.producto-tarjeta');
+                const filtrados = filtroActual === 'todos' 
+                    ? PRODUCTOS 
+                    : PRODUCTOS.filter(p => p.categoria === filtroActual);
+                
+                tarjetas.forEach(function(tarjeta, idx) {
+                    const prodEnFiltro = filtrados[idx];
+                    if (prodEnFiltro && generarSlug(prodEnFiltro.nombre) === slugBuscado) {
+                        tarjeta.classList.add('abierto');
+                        tarjeta.classList.add('destacado');
+                        try {
+                            tarjeta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } catch(e) {
+                            const y = tarjeta.getBoundingClientRect().top + window.pageYOffset - 120;
+                            window.scrollTo(0, y);
+                        }
+                    }
+                });
+                
+                document.removeEventListener('touchstart', primerToque);
+                document.removeEventListener('click', primerToque);
+            };
+            
+            document.addEventListener('touchstart', primerToque, { once: true });
+            document.addEventListener('click', primerToque, { once: true });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const guardado = localStorage.getItem('carritoMR');
+            if (guardado) {
+                try {
+                    carrito = JSON.parse(guardado);
+                } catch(e) { carrito = []; }
+            }
+            renderizarProductos();
+            actualizarCarrito();
+        });
+        
+        window.addEventListener('load', function() {
+            setTimeout(detectarProductoCompartido, 200);
+        });
+
+        function renderizarProductos() {
+            const grid = document.getElementById('tiendaGrid');
+            const botonVerMas = document.getElementById('botonVerMas');
+            const contador = document.getElementById('contadorProductos');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const filtrados = filtroActual === 'todos' 
+                ? PRODUCTOS 
+                : PRODUCTOS.filter(p => p.categoria === filtroActual);
+            
+            if (filtrados.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; color:#888; grid-column: 1/-1; padding: 40px;">No hay productos en esta categoría por ahora.</p>';
+                if (botonVerMas) botonVerMas.style.display = 'none';
+                if (contador) contador.textContent = '';
+                return;
+            }
+            
+            const visibles = filtrados.slice(0, productosVisibles);
+            
+            visibles.forEach((producto) => {
+                const claseEstado = producto.estado === 'Nuevo' ? 'estado-nuevo' 
+                                  : producto.estado === 'Usado' ? 'estado-usado' 
+                                  : 'estado-consultar';
+                
+                const estaEnCarrito = carrito.some(item => item.nombre === producto.nombre);
+                const indexReal = PRODUCTOS.indexOf(producto);
+                const slug = generarSlug(producto.nombre);
+                
+                const contenidoImagen = producto.foto 
+                    ? `<img src="${producto.foto}" alt="${producto.nombre}" loading="lazy">` 
+                    : producto.icono;
+                
+                const contenidoPrecio = producto.precio 
+                    ? `Precio: <span class="precio-valor">${producto.precio}</span>` 
+                    : 'Precio según disponibilidad';
+                
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'producto-tarjeta';
+                tarjeta.id = 'producto-' + slug;
+                tarjeta.innerHTML = `
+                    <div class="producto-cabecera" onclick="toggleDetalleProducto(this)">
+                        <div class="producto-imagen">
+                            <span class="producto-estado ${claseEstado}">${producto.estado}</span>
+                            ${contenidoImagen}
+                        </div>
+                        <div class="producto-info-rapida">
+                            <span class="producto-categoria">${producto.categoria}</span>
+                            <h3 class="producto-titulo">${producto.nombre}</h3>
+                            <span class="producto-flecha"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="producto-detalle">
+                        <p class="producto-specs">${producto.especificaciones}</p>
+                        <p class="producto-precio">${contenidoPrecio}</p>
+                        <div class="producto-acciones">
+                            <button class="boton-agregar ${estaEnCarrito ? 'agregado' : ''}" onclick="event.stopPropagation(); toggleProductoCarrito(${indexReal})">
+                                <i class="fas ${estaEnCarrito ? 'fa-check' : 'fa-plus'}"></i>
+                                ${estaEnCarrito ? 'En el carrito' : 'Agregar al carrito'}
+                            </button>
+                            <button class="boton-compartir" onclick="event.stopPropagation(); compartirProducto(${indexReal})" title="Copiar link del producto" aria-label="Copiar link del producto">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(tarjeta);
+            });
+            
+            if (botonVerMas) {
+                if (productosVisibles >= filtrados.length) {
+                    botonVerMas.classList.add('agotado');
+                    botonVerMas.innerHTML = '<i class="fas fa-check-circle"></i> Has visto todos los productos';
+                } else {
+                    botonVerMas.classList.remove('agotado');
+                    botonVerMas.innerHTML = '<i class="fas fa-plus-circle"></i> Ver más productos';
+                }
+            }
+            
+            if (contador) {
+                const mostrados = Math.min(productosVisibles, filtrados.length);
+                contador.textContent = `Mostrando ${mostrados} de ${filtrados.length} productos`;
+            }
+        }
+
+        function cargarMasProductos() {
+            const filtrados = filtroActual === 'todos' 
+                ? PRODUCTOS 
+                : PRODUCTOS.filter(p => p.categoria === filtroActual);
+            
+            if (productosVisibles >= filtrados.length) return;
+            
+            productosVisibles += PRODUCTOS_POR_CARGA;
+            renderizarProductos();
+        }
+
+        function toggleDetalleProducto(elemento) {
+            const tarjeta = elemento.closest('.producto-tarjeta');
+            tarjeta.classList.toggle('abierto');
+        }
+
+        function filtrarProductos(categoria, boton) {
+            filtroActual = categoria;
+            productosVisibles = PRODUCTOS_POR_CARGA;
+            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+            boton.classList.add('activo');
+            renderizarProductos();
+        }
+
+        function toggleProductoCarrito(index) {
+            const producto = PRODUCTOS[index];
+            const existe = carrito.findIndex(item => item.nombre === producto.nombre);
+            
+            if (existe !== -1) {
+                carrito.splice(existe, 1);
+            } else {
+                carrito.push({ 
+                    nombre: producto.nombre, 
+                    categoria: producto.categoria,
+                    especificaciones: producto.especificaciones,
+                    estado: producto.estado,
+                    icono: producto.icono,
+                    foto: producto.foto,
+                    precio: producto.precio
+                });
+            }
+            
+            localStorage.setItem('carritoMR', JSON.stringify(carrito));
+            renderizarProductos();
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const contador = document.getElementById('carritoContador');
+            const items = document.getElementById('carritoItems');
+            
+            if (contador) contador.textContent = carrito.length;
+            
+            if (!items) return;
+            
+            if (carrito.length === 0) {
+                items.innerHTML = `
+                    <div class="carrito-vacio">
+                        <i class="fas fa-shopping-basket"></i>
+                        Aún no has seleccionado productos
+                    </div>
+                `;
+                return;
+            }
+            
+            items.innerHTML = '';
+            carrito.forEach((item, index) => {
+                const iconoCarrito = item.foto 
+                    ? `<img src="${item.foto}" alt="${item.nombre}">` 
+                    : item.icono;
+                
+                const div = document.createElement('div');
+                div.className = 'carrito-item';
+                div.innerHTML = `
+                    <div class="carrito-item-icono">${iconoCarrito}</div>
+                    <div class="carrito-item-info">
+                        <strong>${item.nombre}</strong>
+                        <span>${item.categoria} · ${item.estado}</span>
+                    </div>
+                    <button class="carrito-item-eliminar" onclick="eliminarDelCarrito(${index})">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                items.appendChild(div);
+            });
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            localStorage.setItem('carritoMR', JSON.stringify(carrito));
+            renderizarProductos();
+            actualizarCarrito();
+        }
+
+        function toggleCarrito() {
+            document.getElementById('carritoPanel').classList.toggle('abierto');
+        }
+
+        function enviarCotizacion() {
+            if (carrito.length === 0) {
+                alert('Por favor selecciona al menos un producto antes de enviar la cotización.');
+                return;
+            }
+            
+            const numeroWhatsApp = "573113944320";
+            let texto = "Buen día, solicito cotización formal de los siguientes productos:\n\n";
+            
+            carrito.forEach((item, i) => {
+                texto += `${i + 1}. ${item.nombre}\n`;
+                texto += `   Especificaciones: ${item.especificaciones}\n`;
+                texto += `   Categoria: ${item.categoria} - Estado: ${item.estado}\n\n`;
+            });
+            
+            texto += "Quedo atento a precios, disponibilidad y condiciones de pago. Gracias.";
+            
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+
+        window.addEventListener('scroll', function() {
+            var secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(function(seccion) {
+                var posicion = seccion.getBoundingClientRect().top;
+                var pantalla = window.innerHeight;
+                if (posicion < pantalla - 100) seccion.classList.add('visible');
+            });
+        });
+
+        document.getElementById('formularioContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+            const numeroWhatsApp = "573113944320"; 
+            const texto = `Hola, soy ${nombre}. Necesito el siguiente servicio: ${mensaje}.`;
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        });
+
+        function verificarAcceso() {
+            var clave = document.getElementById('claveAcceso').value;
+            var contrasenaCorrecta = "MR2026"; 
+            if (clave === contrasenaCorrecta) {
+                document.getElementById('acceso-privado').style.display = 'none';
+                document.getElementById('area-interna').classList.add('visible');
+                document.getElementById('mensajeError').style.display = 'none';
+            } else { 
+                document.getElementById('mensajeError').style.display = 'block'; 
+            }
+        }
+
+        let indiceActual = 0; 
+        let elementosGaleria = [];
+        
+        function abrirLightbox(elemento) {
+            elementosGaleria = [];
+            const items = document.querySelectorAll('.item-carrusel');
+            const total = items.length / 2;
+            for (let i = 0; i < total; i++) elementosGaleria.push(items[i]);
+            indiceActual = Array.from(items).indexOf(elemento) % total;
+            document.getElementById('lightbox').classList.add('activo');
+            actualizarLightbox();
+        }
+        
+        function actualizarLightbox() {
+            const contenido = document.getElementById('lightbox-contenido');
+            const contador = document.getElementById('lightbox-contador');
+            contenido.innerHTML = '';
+            const elemento = elementosGaleria[indiceActual];
+            const media = elemento.querySelector('img, video');
+            if (media.tagName === 'IMG') {
+                const img = document.createElement('img'); 
+                img.src = media.src; 
+                img.alt = media.alt; 
+                contenido.appendChild(img);
+            } else if (media.tagName === 'VIDEO') {
+                const video = document.createElement('video'); 
+                video.src = media.src; 
+                video.controls = true; 
+                video.autoplay = true; 
+                contenido.appendChild(video);
+            }
+            contador.textContent = `${indiceActual + 1} de ${elementosGaleria.length}`;
+        }
+        
+        function cambiarLightbox(direccion) {
+            indiceActual += direccion;
+            if (indiceActual >= elementosGaleria.length) indiceActual = 0;
+            if (indiceActual < 0) indiceActual = elementosGaleria.length - 1;
+            actualizarLightbox();
+        }
+        
+        function cerrarLightbox() {
+            document.getElementById('lightbox').classList.remove('activo');
+            document.getElementById('lightbox-contenido').innerHTML = '';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') cerrarLightbox();
+            if (e.key === 'ArrowLeft') cambiarLightbox(-1);
+            if (e.key === 'ArrowRight') cambiarLightbox(1);
+        });
+    </script>
+</body>
+</html>
